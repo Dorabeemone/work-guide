@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPS字体规范操作指南 - GB/T 9704-2012</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --primary-dark: #1c65d3;
+            --secondary-color: #6e84a3;
+            --accent-color: #00a854;
+            --accent-light: #00c865;
+            --warning-color: #f0ad4e;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #12263f;
+            --text-secondary: #6e84a3;
+            --border-color: #e3ebf6;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+            --border-radius-sm: 10px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s ease;
+            --gradient-primary: linear-gradient(135deg, #2c7be5 0%, #1c65d3 100%);
+            --gradient-accent: linear-gradient(135deg, #00a854 0%, #00c865 100%);
+            --gradient-light: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--gradient-light);
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 头部样式 */
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-lg);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00a854, #2c7be5, #00a854);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 8px 20px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 主要内容布局 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 1100px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        /* 内容卡片样式 */
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .content-card:hover::before {
+            opacity: 1;
+        }
+
+        .content-card h2 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(44, 123, 229, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .content-card h2 i {
+            color: var(--primary-color);
+            background: rgba(44, 123, 229, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 字体展示样式 */
+        .font-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .font-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .font-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .font-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .font-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .font-size {
+            background: rgba(44, 123, 229, 0.1);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .font-preview {
+            font-size: 1.8rem;
+            margin: 15px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 8px;
+            padding: 15px;
+            background: rgba(248, 249, 250, 0.5);
+        }
+
+        .font-usage {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        /* 操作步骤样式 */
+        .step-container {
+            background: linear-gradient(135deg, rgba(0, 168, 84, 0.05) 0%, rgba(0, 168, 84, 0.02) 100%);
+            border-radius: var(--border-radius-sm);
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(0, 168, 84, 0.1);
+            position: relative;
+        }
+
+        .step-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+        }
+
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 168, 84, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .step-number {
+            background: var(--gradient-accent);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 168, 84, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .step-content {
+            padding-left: 62px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wps-path {
+            background: linear-gradient(135deg, rgba(44, 123, 229, 0.1) 0%, rgba(44, 123, 229, 0.05) 100%);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin: 18px 0;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(44, 123, 229, 0.15);
+        }
+
+        .wps-path:hover {
+            background: linear-gradient(135deg, rgba(44, 123, 229, 0.15) 0%, rgba(44, 123, 229, 0.1) 100%);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(44, 123, 229, 0.1);
+        }
+
+        .wps-path i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* 表格样式 */
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .parameter-table th, .parameter-table td {
+            border: 1px solid var(--border-color);
+            padding: 18px 20px;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .parameter-table th {
+            background: linear-gradient(135deg, rgba(44, 123, 229, 0.1) 0%, rgba(44, 123, 229, 0.05) 100%);
+            font-weight: 700;
+            color: var(--primary-color);
+            width: 25%;
+            font-size: 1.05rem;
+        }
+
+        .parameter-table td {
+            background-color: white;
+        }
+
+        .parameter-table tr:nth-child(even) td {
+            background-color: rgba(248, 249, 250, 0.7);
+        }
+
+        .parameter-table tr:hover td {
+            background-color: rgba(44, 123, 229, 0.05);
+        }
+
+        /* 侧边栏样式 */
+        .sidebar {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .sidebar h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(44, 123, 229, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quick-nav {
+            list-style-type: none;
+        }
+
+        .quick-nav li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .quick-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-weight: 500;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-nav a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, rgba(44, 123, 229, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .quick-nav a:hover {
+            background-color: rgba(44, 123, 229, 0.05);
+            color: var(--primary-color);
+            transform: translateX(10px);
+            border-color: rgba(44, 123, 229, 0.2);
+        }
+
+        .quick-nav a:hover::before {
+            width: 100%;
+        }
+
+        .quick-nav a.active {
+            background: linear-gradient(135deg, rgba(44, 123, 229, 0.1) 0%, rgba(44, 123, 229, 0.05) 100%);
+            color: var(--primary-color);
+            font-weight: 600;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(44, 123, 229, 0.1);
+        }
+
+        .quick-nav a i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .wps-tip {
+            background: linear-gradient(135deg, rgba(0, 168, 84, 0.1) 0%, rgba(0, 168, 84, 0.05) 100%);
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 168, 84, 0.15);
+        }
+
+        .wps-tip:hover {
+            background: linear-gradient(135deg, rgba(0, 168, 84, 0.15) 0%, rgba(0, 168, 84, 0.1) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 168, 84, 0.1);
+        }
+
+        .wps-tip h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* 重点提示样式 */
+        .important-note {
+            background: linear-gradient(135deg, rgba(240, 173, 78, 0.1) 0%, rgba(240, 173, 78, 0.05) 100%);
+            border-left: 4px solid var(--warning-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            transition: var(--transition);
+            border: 1px solid rgba(240, 173, 78, 0.15);
+        }
+
+        .important-note:hover {
+            background: linear-gradient(135deg, rgba(240, 173, 78, 0.15) 0%, rgba(240, 173, 78, 0.1) 100%);
+            transform: translateX(5px);
+        }
+
+        .important-note h4 {
+            color: var(--warning-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+                margin-top: 10px;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 20px;
+                align-self: flex-start;
+                width: fit-content;
+                margin: 0 auto 20px auto;
+            }
+            
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 20px;
+            }
+            
+            .content-card {
+                padding: 25px;
+            }
+            
+            .step-content {
+                padding-left: 0;
+            }
+            
+            .step-header {
+                margin-bottom: 25px;
+            }
+            
+            .main-content {
+                gap: 25px;
+            }
+            
+            .font-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+                border-radius: 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+        }
+        
+        /* 字体模拟样式 */
+        .fangzheng-xiaobiaosong {
+            font-family: 'SimHei', 'Microsoft YaHei', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .fangzheng-kaiti {
+            font-family: 'KaiTi', 'STKaiti', serif;
+        }
+        
+        .fangzheng-heiti {
+            font-family: 'SimHei', 'Microsoft YaHei', sans-serif;
+            font-weight: bold;
+        }
+        
+        .fangzheng-fangsong {
+            font-family: 'FangSong', 'STFangsong', serif;
+        }
+        
+        .times-new-roman {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        /* 特殊效果 */
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 100%);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            color: #e6a700;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            transition: var(--transition);
+        }
+        
+        .highlight:hover {
+            background: linear-gradient(120deg, rgba(255, 193, 7, 0.25) 0%, rgba(255, 193, 7, 0.15) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.1);
+        }
+        
+        /* 页脚样式 */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            background-color: rgba(44, 123, 229, 0.05);
+            color: var(--primary-dark);
+        }
+
+        .footer-links a:hover::after {
+            width: calc(100% - 32px);
+        }
+        
+        /* 浮动按钮 */
+        .floating-indicator {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(44, 123, 229, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(44, 123, 229, 0.3); }
+            50% { box-shadow: 0 8px 25px rgba(44, 123, 229, 0.6); }
+            100% { box-shadow: 0 8px 25px rgba(44, 123, 229, 0.3); }
+        }
+        
+        .floating-indicator:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(44, 123, 229, 0.4);
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+        
+        /* 新增样式：字体总览卡片 */
+        .font-overview-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 25px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(44, 123, 229, 0.05) 0%, rgba(44, 123, 229, 0.02) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(44, 123, 229, 0.1);
+        }
+        
+        .font-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            background: rgba(44, 123, 229, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .font-overview-content {
+            flex: 1;
+        }
+        
+        .font-overview-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .font-overview-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* 警告框样式 */
+        .warning-note {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(220, 53, 69, 0.05) 100%);
+            border-left: 4px solid var(--danger-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            transition: var(--transition);
+            border: 1px solid rgba(220, 53, 69, 0.15);
+        }
+        
+        .warning-note:hover {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.1) 100%);
+            transform: translateX(5px);
+        }
+        
+        .warning-note h4 {
+            color: var(--danger-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+        }
+        
+        /* 关键操作提示 */
+        .key-operation {
+            background: linear-gradient(135deg, rgba(44, 123, 229, 0.1) 0%, rgba(44, 123, 229, 0.05) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .key-operation h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="container">
+        <header class="header">
+            <a href="word.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回上级
+            </a>
+            <h1>WPS字体规范操作指南</h1>
+            <p>GB/T 9704-2012国家标准 - 公文格式字体设置详细操作步骤</p>
+            <div class="header-badge">
+                <i class="fas fa-font"></i> 新手友好型教程
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="content-main">
+                <!-- 字体规范总览 -->
+                <div class="content-card">
+                    <h2><i class="fas fa-font"></i> 公文字体规范总览</h2>
+                    <p>根据GB/T 9704-2012《党政机关公文格式》国家标准，公文各部分字体要求如下：</p>
+                    
+                    <!-- 字体总览卡片 -->
+                    <div class="font-overview-card">
+                        <div class="font-icon">
+                            <i class="fas fa-heading"></i>
+                        </div>
+                        <div class="font-overview-content">
+                            <h3>大标题：方正小标宋_GBK 二号字</h3>
+                            <p>文件总标题，居中显示，行间距32磅，无缩进。如有副标题使用破折号连接，方正楷体_GBK三号字居中。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="font-overview-card">
+                        <div class="font-icon">
+                            <i class="fas fa-list-ol"></i>
+                        </div>
+                        <div class="font-overview-content">
+                            <h3>各级标题：严格分级设置</h3>
+                            <p>一级标题：方正黑体_GBK三号字；二级标题：方正楷体_GBK三号字；三级和四级标题：方正仿宋_GBK三号字（可加粗）。所有标题都需要首行缩进2字符。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="font-overview-card">
+                        <div class="font-icon">
+                            <i class="fas fa-file-text"></i>
+                        </div>
+                        <div class="font-overview-content">
+                            <h3>正文：方正仿宋_GBK 三号字</h3>
+                            <p>中文正文使用方正仿宋_GBK三号字，数字和西文使用Times New Roman三号字。附件、落款、联系方式等使用与正文相同的字体。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-info-circle"></i> 重要说明：关于GBK字符集</h4>
+                        <p>GBK字符集是在GB2312字符集上对收录更多字符的扩大版本，一般情况下GB2312字符集也可用。</p>
+                        <p>关于是否统一使用方正字库，国标并未规定，但为统一规范，建议使用方正字库。</p>
+                        <p><strong>如果没有遇到极端特殊情况，无法使用方正字体，可以应急使用系统自带字体替代：</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>方正小标宋_GBK → <strong>黑体</strong>或<strong>微软雅黑</strong></li>
+                            <li>方正黑体_GBK → <strong>黑体</strong>或<strong>微软雅黑</strong></li>
+                            <li>方正楷体_GBK → <strong>楷体</strong></li>
+                            <li>方正仿宋_GBK → <strong>仿宋</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-operation">
+                        <h4><i class="fas fa-lightbulb"></i> 操作顺序建议</h4>
+                        <p>1. 先设置全文基础字体（全选设置中文和西文字体）</p>
+                        <p>2. 单独设置大标题格式</p>
+                        <p>3. 依次设置各级标题格式</p>
+                        <p>4. 最后设置附件、落款等特殊部分</p>
+                    </div>
+                </div>
+
+                <!-- 大标题设置 -->
+                <div class="content-card" id="main-title">
+                    <h2><i class="fas fa-heading"></i> 大标题设置</h2>
+                    <p>大标题是文件的总标题，如"关于XXX的通知"、"工作报告"等，格式要求如下：</p>
+                    
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>标准值</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>字体</td>
+                                <td><span class="highlight">方正小标宋_GBK</span></td>
+                                <td>如无此字体，可用黑体或微软雅黑替代</td>
+                            </tr>
+                            <tr>
+                                <td>字号</td>
+                                <td><span class="highlight">二号字</span></td>
+                                <td>字体大小约为22磅</td>
+                            </tr>
+                            <tr>
+                                <td>对齐方式</td>
+                                <td><span class="highlight">居中</span></td>
+                                <td>在页面水平居中</td>
+                            </tr>
+                            <tr>
+                                <td>行间距</td>
+                                <td><span class="highlight">32磅</span></td>
+                                <td>比正文略大，更显突出</td>
+                            </tr>
+                            <tr>
+                                <td>缩进</td>
+                                <td><span class="highlight">无缩进</span></td>
+                                <td>大标题不需要首行缩进</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">选中大标题文本</div>
+                            </div>
+                            <div class="step-content">
+                                <p>使用鼠标拖动选中文件的大标题（总标题）文本。</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-mouse-pointer"></i>
+                                    <span>操作方法：点击并拖动鼠标选中标题文字</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置字体和字号</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在WPS"开始"选项卡中设置字体：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-font"></i>
+                                    <span>操作路径：开始 → 字体设置区域</span>
+                                </div>
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>点击<strong>字体下拉框</strong>，选择<strong>"方正小标宋_GBK"</strong></li>
+                                    <li>如果找不到此字体，可选择<strong>"黑体"</strong>或<strong>"微软雅黑"</strong></li>
+                                    <li>点击<strong>字号下拉框</strong>，选择<strong>"二号"</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">设置对齐方式</div>
+                            </div>
+                            <div class="step-content">
+                                <p>设置标题在页面中居中显示：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-align-center"></i>
+                                    <span>操作路径：开始 → 段落区域 → 居中按钮</span>
+                                </div>
+                                <p>直接点击<strong>居中按钮</strong>（图标为居中对齐的文本）</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-title">处理副标题（如有）</div>
+                            </div>
+                            <div class="step-content">
+                                <p>如果有副标题，使用破折号连接，格式如下：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-minus"></i>
+                                    <span>字体：方正楷体_GBK（或楷体） | 字号：三号 | 对齐：居中</span>
+                                </div>
+                                <p>示例：<span class="fangzheng-kaiti" style="font-size: 18px;">——如有副标题，使用破折号，方正楷体_GBK三号字居中</span></p>
+                                
+                                <div class="warning-note" style="margin-top: 15px;">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> 特别注意</h4>
+                                    <p>大标题和副标题都不需要首行缩进！</p>
+                                    <p>但文档内部的一级、二级、三级、四级标题都需要首行缩进2字符！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 各级标题设置 -->
+                <div class="content-card" id="sub-titles">
+                    <h2><i class="fas fa-list-ol"></i> 各级标题设置</h2>
+                    <p>公文内部层级标题的字体规范：</p>
+                    
+                    <div class="font-showcase">
+                        <!-- 一级标题 -->
+                        <div class="font-card">
+                            <div class="font-card-header">
+                                <div class="font-name">方正黑体_GBK</div>
+                                <div class="font-size">三号字</div>
+                            </div>
+                            <div class="font-preview fangzheng-heiti" style="font-size: 22px;">
+                                一、我是一级标题
+                            </div>
+                            <div class="font-usage">
+                                <strong>使用场景：</strong> 文档内部一级标题
+                            </div>
+                        </div>
+                        
+                        <!-- 二级标题 -->
+                        <div class="font-card">
+                            <div class="font-card-header">
+                                <div class="font-name">方正楷体_GBK</div>
+                                <div class="font-size">三号字</div>
+                            </div>
+                            <div class="font-preview fangzheng-kaiti" style="font-size: 22px;">
+                                （一）我是二级标题
+                            </div>
+                            <div class="font-usage">
+                                <strong>使用场景：</strong> 文档内部二级标题
+                            </div>
+                        </div>
+                        
+                        <!-- 三级标题 -->
+                        <div class="font-card">
+                            <div class="font-card-header">
+                                <div class="font-name">方正仿宋_GBK</div>
+                                <div class="font-size">三号字</div>
+                            </div>
+                            <div class="font-preview fangzheng-fangsong" style="font-size: 22px; font-weight: bold;">
+                                1. 三级标题（可加粗）
+                            </div>
+                            <div class="font-usage">
+                                <strong>使用场景：</strong> 文档内部三级标题
+                            </div>
+                        </div>
+                        
+                        <!-- 四级标题 -->
+                        <div class="font-card">
+                            <div class="font-card-header">
+                                <div class="font-name">方正仿宋_GBK</div>
+                                <div class="font-size">三号字</div>
+                            </div>
+                            <div class="font-preview fangzheng-fangsong" style="font-size: 22px; font-weight: bold;">
+                                （1）四级标题（可加粗）
+                            </div>
+                            <div class="font-usage">
+                                <strong>使用场景：</strong> 文档内部四级标题
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">设置一级标题</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>选中一级标题文本（如"一、标题内容"）</li>
+                                    <li>在"开始"选项卡中，设置字体为<strong>"方正黑体_GBK"</strong>（或黑体/微软雅黑）</li>
+                                    <li>设置字号为<strong>"三号"</strong></li>
+                                    <li>确保对齐方式为<strong>"两端对齐"</strong></li>
+                                    <li><strong>注意：</strong>一级标题需要首行缩进2字符</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置二级标题</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>选中二级标题文本（如"（一）标题内容"）</li>
+                                    <li>在"开始"选项卡中，设置字体为<strong>"方正楷体_GBK"</strong>（或楷体）</li>
+                                    <li>设置字号为<strong>"三号"</strong></li>
+                                    <li>确保对齐方式为<strong>"两端对齐"</strong></li>
+                                    <li><strong>注意：</strong>二级标题需要首行缩进2字符</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">设置三级和四级标题</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>选中三级标题文本（如"1. 标题内容"）或四级标题（如"（1）标题内容"）</li>
+                                    <li>在"开始"选项卡中，设置字体为<strong>"方正仿宋_GBK"</strong>（或仿宋）</li>
+                                    <li>设置字号为<strong>"三号"</strong></li>
+                                    <li>点击<strong>加粗按钮</strong>（B图标）使标题更醒目（可选）</li>
+                                    <li>确保对齐方式为<strong>"两端对齐"</strong></li>
+                                    <li><strong>注意：</strong>三级和四级标题需要首行缩进2字符</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-title">使用格式刷快速应用样式</div>
+                            </div>
+                            <div class="step-content">
+                                <p>设置好一个标题后，可以使用格式刷快速应用到其他同级标题：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <span>操作路径：开始 → 剪贴板区域 → 格式刷</span>
+                                </div>
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>选中已设置好格式的标题</li>
+                                    <li>点击<strong>"格式刷"</strong>按钮（刷子图标）</li>
+                                    <li>用变成刷子形状的鼠标点击其他同级标题</li>
+                                    <li>要应用到多个标题，可<strong>双击</strong>格式刷按钮，然后依次点击多个标题，完成后按ESC键退出</li>
+                                </ol>
+                                
+                                <div class="important-note" style="margin-top: 15px;">
+                                    <h4><i class="fas fa-lightbulb"></i> 格式刷使用技巧</h4>
+                                    <p>• 双击格式刷可以连续应用格式到多个文本</p>
+                                    <p>• 按ESC键可以退出格式刷模式</p>
+                                    <p>• 格式刷会复制所有格式设置，包括字体、字号、颜色、对齐方式等</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 正文及数字西文字体设置 -->
+                <div class="content-card" id="body-text">
+                    <h2><i class="fas fa-file-text"></i> 正文及数字西文字体设置</h2>
+                    <p>正文是公文的主体部分，字体设置需特别注意：</p>
+                    
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>内容类型</th>
+                                <th>字体要求</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>中文正文</td>
+                                <td><span class="highlight">方正仿宋_GBK 三号</span></td>
+                                <td>公文正文标准字体</td>
+                            </tr>
+                            <tr>
+                                <td>数字</td>
+                                <td><span class="highlight">Times New Roman 三号</span></td>
+                                <td>出于美观性考虑</td>
+                            </tr>
+                            <tr>
+                                <td>西文（英文）</td>
+                                <td><span class="highlight">Times New Roman 三号</span></td>
+                                <td>出于美观性考虑</td>
+                            </tr>
+                            <tr>
+                                <td>附件、落款、联系方式</td>
+                                <td><span class="highlight">方正仿宋_GBK 三号</span></td>
+                                <td>与正文字体相同</td>
+                            </tr>
+                            <tr>
+                                <td>作者和日期（如需标注）</td>
+                                <td><span class="highlight">方正仿宋_GBK 三号</span></td>
+                                <td>居中排布</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">设置正文中文部分</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>按<strong>Ctrl+A</strong>全选文档</li>
+                                    <li>在"开始"选项卡中，设置字体为<strong>"方正仿宋_GBK"</strong>（或仿宋）</li>
+                                    <li>设置字号为<strong>"三号"</strong></li>
+                                    <li>此时全文档都会被设置为仿宋三号字</li>
+                                </ol>
+                                
+                                <div class="wps-path">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <span>注意：全选设置后，大标题和各级标题的字体会被覆盖，需要单独重新设置</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置数字和西文字体</div>
+                            </div>
+                            <div class="step-content">
+                                <p>WPS提供便捷功能单独设置数字和西文字体：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-language"></i>
+                                    <span>操作路径：开始 → 字体设置区域 → 字体对话框启动器（右下角小箭头）</span>
+                                </div>
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>按<strong>Ctrl+A</strong>全选文档</li>
+                                    <li>点击字体设置区域右下角的<strong>小箭头图标</strong>，打开字体对话框</li>
+                                    <li>在"字体"选项卡中，设置：
+                                        <ul style="margin-left: 20px; margin-top: 8px;">
+                                            <li><strong>中文字体：</strong>方正仿宋_GBK（或仿宋）</li>
+                                            <li><strong>西文字体：</strong>Times New Roman</li>
+                                        </ul>
+                                    </li>
+                                    <li>设置<strong>字号</strong>为<strong>"三号"</strong></li>
+                                    <li>点击<strong>"确定"</strong>应用设置</li>
+                                </ol>
+                                
+                                <div class="important-note" style="margin-top: 20px;">
+                                    <h4><i class="fas fa-lightbulb"></i> 操作提示</h4>
+                                    <p>这种方法可以一次性设置中文和西文字体，无需分别设置，非常高效。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">重新设置标题字体</div>
+                            </div>
+                            <div class="step-content">
+                                <p>全选设置后，需要重新设置标题字体：</p>
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>使用前面介绍的方法，重新设置大标题字体（方正小标宋_GBK 二号）</li>
+                                    <li>重新设置一级标题字体（方正黑体_GBK 三号）</li>
+                                    <li>重新设置二级标题字体（方正楷体_GBK 三号）</li>
+                                    <li>三级和四级标题已保持为方正仿宋_GBK三号，无需调整</li>
+                                </ol>
+                                
+                                <div class="wps-path">
+                                    <i class="fas fa-redo-alt"></i>
+                                    <span>建议操作顺序：先设置全文正文和西文字体，再设置各级标题字体</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-question-circle"></i> 常见问题：没有Times New Roman字体怎么办？</h4>
+                        <p>如果电脑中没有安装Times New Roman字体，可以使用以下替代方案：</p>
+                        <ol style="margin-left: 25px; margin-top: 10px;">
+                            <li>使用<strong>宋体</strong>作为数字和西文字体</li>
+                            <li>或保持数字和西文与中文字体一致（方正仿宋_GBK）</li>
+                            <li>安装Times New Roman字体（可从微软官方渠道获取）</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 附件、落款和联系方式 -->
+                <div class="content-card" id="attachments">
+                    <h2><i class="fas fa-paperclip"></i> 附件、落款和联系方式</h2>
+                    <p>公文末尾部分的字体规范：</p>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">附件格式设置</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>在正文与附件之间<strong>空一行</strong>（按Enter键）</li>
+                                    <li>输入"附件："二字，并设置<strong>首行缩进2字符</strong></li>
+                                    <li>附件内容使用<strong>方正仿宋_GBK三号</strong>字体</li>
+                                    <li>示例格式：
+                                        <div style="background: #f8f9fa; padding: 15px; margin-top: 10px; border-radius: 8px; border-left: 3px solid var(--primary-color); font-family: 'FangSong', serif; font-size: 18px;">
+                                            <p style="margin: 0;">附件：1．今天晚上吃什么</p>
+                                            <p style="margin: 5px 0 0 0;">&nbsp;&nbsp;&nbsp;&nbsp;2．二十四号混凝土拌意大利面的制作方法</p>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">落款格式设置</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>落款与正文之间<strong>空1～3行</strong>（不盖章时1行，盖章时建议3行）</li>
+                                    <li>落款单位使用<strong>方正仿宋_GBK三号</strong>字体</li>
+                                    <li>设置对齐方式为<strong>"右对齐"</strong></li>
+                                    <li>设置<strong>右缩进4字符</strong>（在段落设置中设置）</li>
+                                    <li>示例格式：
+                                        <div style="background: #f8f9fa; padding: 15px; margin-top: 10px; border-radius: 8px; border-left: 3px solid var(--primary-color); font-family: 'FangSong', serif; font-size: 18px; text-align: right; padding-right: 40px;">
+                                            <p style="margin: 0;">华中科技大学学生会联络服务部</p>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">日期和联系方式设置</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>日期在落款下一行，使用<strong>方正仿宋_GBK三号</strong>字体</li>
+                                    <li>对齐方式为<strong>"右对齐"</strong>，以落款为基准居中</li>
+                                    <li>联系方式在日期下一行，使用<strong>方正仿宋_GBK三号</strong>字体</li>
+                                    <li>联系方式<strong>靠左缩进两字符</strong></li>
+                                    <li>示例格式：
+                                        <div style="background: #f8f9fa; padding: 15px; margin-top: 10px; border-radius: 8px; border-left: 3px solid var(--primary-color); font-family: 'FangSong', serif; font-size: 18px;">
+                                            <p style="margin: 0; text-align: right;">2025年11月23日</p>
+                                            <p style="margin: 5px 0 0 20px;">联系人：银杏果</p>
+                                            <p style="margin: 0 0 0 20px;">联系方式：15657860268</p>
+                                        </div>
+                                    </li>
+                                </ol>
+                                
+                                <div class="important-note" style="margin-top: 15px;">
+                                    <h4><i class="fas fa-info-circle"></i> 关于作者和日期的特别说明</h4>
+                                    <p>根据规范：对于除演讲稿、署名文章外的普通工作文件，通常不标注作者和日期。</p>
+                                    <p>如需标注作者和日期，请按以下要求：</p>
+                                    <ol style="margin-left: 20px; margin-top: 10px;">
+                                        <li>使用正文字体（方正仿宋_GBK三号字）</li>
+                                        <li>按字体要求居中排布</li>
+                                        <li>不需要首行缩进（特殊格式设置为"无"）</li>
+                                        <li>行间距与正文相同（28磅）</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快速设置技巧 -->
+                <div class="content-card" id="quick-tips">
+                    <h2><i class="fas fa-rocket"></i> 快速设置技巧</h2>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-magic"></i> 高效操作方法</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">使用样式功能批量设置</div>
+                            </div>
+                            <div class="step-content">
+                                <p>WPS的"样式"功能可以保存字体设置，快速应用到其他部分：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-palette"></i>
+                                    <span>操作路径：开始 → 样式区域</span>
+                                </div>
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>设置好一个一级标题的格式</li>
+                                    <li>选中这个标题</li>
+                                    <li>在"样式"区域，点击"新建样式"按钮</li>
+                                    <li>输入样式名称如"公文一级标题"</li>
+                                    <li>以后遇到一级标题，直接应用这个样式即可</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">保存为模板</div>
+                            </div>
+                            <div class="step-content">
+                                <p>设置好一个标准公文后，可以保存为模板供以后使用：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-save"></i>
+                                    <span>操作路径：文件 → 另存为 → 选择"WPS文字模板(*.wpt)"</span>
+                                </div>
+                                <ol style="margin-left: 25px; margin-top: 15px; list-style: decimal; line-height: 1.8;">
+                                    <li>完成所有字体和格式设置</li>
+                                    <li>点击"文件" → "另存为"</li>
+                                    <li>选择文件类型为"WPS文字模板(*.wpt)"</li>
+                                    <li>输入模板名称如"标准公文模板"</li>
+                                    <li>保存后，下次新建文档时可以直接使用此模板</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">常见问题快速解决</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="important-note">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> 问题：字体设置混乱，无法恢复</h4>
+                                    <p><strong>解决方法：</strong>按Ctrl+A全选文档，点击"开始"选项卡中的"清除格式"按钮（A̲图标），然后重新按照本指南设置。</p>
+                                </div>
+                                
+                                <div class="important-note" style="margin-top: 20px;">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> 问题：找不到方正字体</h4>
+                                    <p><strong>解决方法：</strong>使用系统自带字体替代：方正小标宋_GBK→黑体，方正黑体_GBK→黑体，方正楷体_GBK→楷体，方正仿宋_GBK→仿宋。</p>
+                                </div>
+                                
+                                <div class="important-note" style="margin-top: 20px;">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> 问题：数字和西文字体设置无效</h4>
+                                    <p><strong>解决方法：</strong>确保使用字体对话框（Ctrl+D）同时设置中文字体和西文字体，而不是仅仅在工具栏中设置。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="key-operation">
+                        <h4><i class="fas fa-check-circle"></i> 最终检查清单</h4>
+                        <p>完成所有设置后，请检查以下项目：</p>
+                        <ol style="margin-left: 20px; margin-top: 10px;">
+                            <li>大标题：方正小标宋_GBK二号，居中，无缩进</li>
+                            <li>一级标题：方正黑体_GBK三号，首行缩进2字符</li>
+                            <li>二级标题：方正楷体_GBK三号，首行缩进2字符</li>
+                            <li>正文：方正仿宋_GBK三号，首行缩进2字符</li>
+                            <li>数字和西文：Times New Roman三号</li>
+                            <li>附件、落款：方正仿宋_GBK三号，格式正确</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <h3><i class="fas fa-map-signs"></i> 操作导航</h3>
+                <ul class="quick-nav">
+                    <li><a href="#main-title" class="active"><i class="fas fa-heading"></i> 大标题设置</a></li>
+                    <li><a href="#sub-titles"><i class="fas fa-list-ol"></i> 各级标题设置</a></li>
+                    <li><a href="#body-text"><i class="fas fa-file-text"></i> 正文及数字西文</a></li>
+                    <li><a href="#attachments"><i class="fas fa-paperclip"></i> 附件落款设置</a></li>
+                    <li><a href="#quick-tips"><i class="fas fa-rocket"></i> 快速设置技巧</a></li>
+                </ul>
+                
+                <div class="wps-tip">
+                    <h4><i class="fas fa-lightbulb"></i> 操作顺序建议</h4>
+                    <p><strong>1. 先设置全文基础字体</strong> - 全选设置中文和西文字体</p>
+                    <p><strong>2. 设置大标题格式</strong> - 单独设置文件总标题</p>
+                    <p><strong>3. 设置各级标题</strong> - 从一级到四级依次设置</p>
+                    <p><strong>4. 最后设置附件落款</strong> - 文档末尾部分</p>
+                </div>
+                
+                <div class="wps-tip" style="background: linear-gradient(135deg, rgba(44, 123, 229, 0.1) 0%, rgba(44, 123, 229, 0.05) 100%); border-left-color: var(--primary-color); margin-top: 20px;">
+                    <h4><i class="fas fa-font"></i> 字体替代方案</h4>
+                    <p>如果没有方正字体：</p>
+                    <div style="margin-left: 10px; margin-top: 10px;">
+                        <p>• 方正小标宋_GBK → <strong>黑体</strong></p>
+                        <p>• 方正黑体_GBK → <strong>黑体</strong></p>
+                        <p>• 方正楷体_GBK → <strong>楷体</strong></p>
+                        <p>• 方正仿宋_GBK → <strong>仿宋</strong></p>
+                    </div>
+                </div>
+                
+                <div class="wps-tip" style="background: linear-gradient(135deg, rgba(240, 173, 78, 0.1) 0%, rgba(240, 173, 78, 0.05) 100%); border-left-color: var(--warning-color); margin-top: 20px;">
+                    <h4><i class="fas fa-exclamation-triangle"></i> 必须检查项</h4>
+                    <ul style="margin-left: 10px; margin-top: 10px; list-style: none;">
+                        <li><i class="fas fa-check-circle" style="color: var(--warning-color); margin-right: 8px;"></i> 大标题：方正小标宋_GBK二号</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--warning-color); margin-right: 8px;"></i> 一级标题：方正黑体_GBK三号</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--warning-color); margin-right: 8px;"></i> 二级标题：方正楷体_GBK三号</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--warning-color); margin-right: 8px;"></i> 正文：方正仿宋_GBK三号</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 WPS公文排版操作指南 | 基于GB/T 9704-2012国家标准</p>
+            <div class="footer-links">
+                <a href="index.html">返回首页</a>
+                <a href="word.html">返回公文排版教程</a>
+                <a href="paragraph.html">段落排版指南</a>
+                <a href="#">联系我们</a>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
+                本指南提供详细操作步骤，帮助您准确设置公文字体格式，确保符合国家标准要求
+            </p>
+        </footer>
+    </div>
+
+    <div class="floating-indicator" id="toTopBtn" title="返回顶部">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动进度条
+            const progressBar = document.getElementById('progressBar');
+            window.addEventListener('scroll', function() {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+            
+            // 返回顶部按钮
+            const toTopBtn = document.getElementById('toTopBtn');
+            toTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 显示/隐藏返回顶部按钮
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    toTopBtn.style.opacity = '1';
+                    toTopBtn.style.visibility = 'visible';
+                    toTopBtn.style.transform = 'scale(1)';
+                } else {
+                    toTopBtn.style.opacity = '0';
+                    toTopBtn.style.visibility = 'hidden';
+                    toTopBtn.style.transform = 'scale(0.8)';
+                }
+            });
+            
+            // 初始隐藏返回顶部按钮
+            toTopBtn.style.opacity = '0';
+            toTopBtn.style.visibility = 'hidden';
+            toTopBtn.style.transform = 'scale(0.8)';
+            
+            // 为导航链接添加平滑滚动
+            const navLinks = document.querySelectorAll('.quick-nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    
+                    // 添加当前active类
+                    this.classList.add('active');
+                    
+                    // 获取目标元素
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        
+                        // 平滑滚动到目标位置
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 页面加载动画
+            const contentCards = document.querySelectorAll('.content-card');
+            contentCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+            
+            // 更新导航活动状态基于滚动位置
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.content-card[id]');
+                const navLinks = document.querySelectorAll('.quick-nav a');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // 为步骤添加点击展开/收起功能
+            const stepHeaders = document.querySelectorAll('.step-header');
+            stepHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const stepNumber = header.querySelector('.step-number');
+                
+                // 默认展开所有步骤
+                content.style.display = 'block';
+                
+                header.style.cursor = 'pointer';
+                
+                header.addEventListener('click', function() {
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                        content.style.animation = 'fadeIn 0.5s ease-out';
+                        stepNumber.style.boxShadow = '0 4px 12px rgba(0, 168, 84, 0.3)';
+                    } else {
+                        content.style.display = 'none';
+                        stepNumber.style.boxShadow = '0 4px 12px rgba(44, 123, 229, 0.3)';
+                    }
+                });
+            });
+            
+            // 为字体卡片添加交互效果
+            const fontCards = document.querySelectorAll('.font-card');
+            fontCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 添加示例字体切换功能
+            const fontPreviews = document.querySelectorAll('.font-preview');
+            fontPreviews.forEach(preview => {
+                preview.addEventListener('click', function() {
+                    const fontName = this.closest('.font-card').querySelector('.font-name').textContent;
+                    const fontSize = this.closest('.font-card').querySelector('.font-size').textContent;
+                    
+                    // 临时显示字体信息
+                    const originalText = this.textContent;
+                    this.textContent = `${fontName} ${fontSize}`;
+                    this.style.backgroundColor = 'rgba(44, 123, 229, 0.1)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                });
+            });
+            
+            // 添加键盘快捷键
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+H 显示帮助
+                if (e.ctrlKey && e.key === 'h') {
+                    e.preventDefault();
+                    alert('字体设置快捷键提示：\n\n1. Ctrl+A：全选文档\n2. Ctrl+D：打开字体对话框\n3. Ctrl+Shift+C：复制格式\n4. Ctrl+Shift+V：粘贴格式\n5. Ctrl+B：加粗文本\n6. Ctrl+I：斜体文本');
+                }
+            });
+            
+            // 添加字体检查功能
+            const fontCheckBtn = document.createElement('button');
+            fontCheckBtn.innerHTML = '<i class="fas fa-check-circle"></i> 字体检查';
+            fontCheckBtn.style.position = 'fixed';
+            fontCheckBtn.style.bottom = '30px';
+            fontCheckBtn.style.left = '30px';
+            fontCheckBtn.style.background = 'var(--gradient-accent)';
+            fontCheckBtn.style.color = 'white';
+            fontCheckBtn.style.border = 'none';
+            fontCheckBtn.style.borderRadius = '50px';
+            fontCheckBtn.style.padding = '12px 25px';
+            fontCheckBtn.style.fontSize = '0.95rem';
+            fontCheckBtn.style.cursor = 'pointer';
+            fontCheckBtn.style.boxShadow = '0 5px 20px rgba(0, 168, 84, 0.3)';
+            fontCheckBtn.style.zIndex = '999';
+            fontCheckBtn.style.transition = 'var(--transition)';
+            fontCheckBtn.style.fontWeight = '500';
+            fontCheckBtn.style.display = 'flex';
+            fontCheckBtn.style.alignItems = 'center';
+            fontCheckBtn.style.gap = '10px';
+            
+            fontCheckBtn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 8px 25px rgba(0, 168, 84, 0.4)';
+            });
+            
+            fontCheckBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 20px rgba(0, 168, 84, 0.3)';
+            });
+            
+            fontCheckBtn.addEventListener('click', function() {
+                alert('字体设置检查清单：\n\n✓ 大标题：方正小标宋_GBK二号，居中\n✓ 一级标题：方正黑体_GBK三号\n✓ 二级标题：方正楷体_GBK三号\n✓ 正文：方正仿宋_GBK三号\n✓ 数字西文：Times New Roman三号\n\n请对照以上清单检查文档字体设置。');
+            });
+            
+            // 仅在桌面设备上显示按钮
+            if (window.innerWidth > 768) {
+                document.body.appendChild(fontCheckBtn);
+            }
+            
+            // 响应式调整
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    if (!document.body.contains(fontCheckBtn)) {
+                        document.body.appendChild(fontCheckBtn);
+                    }
+                } else {
+                    if (document.body.contains(fontCheckBtn)) {
+                        document.body.removeChild(fontCheckBtn);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

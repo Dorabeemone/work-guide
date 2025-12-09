@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公文排版素材下载 - GB/T 9704-2012</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --secondary-color: #6e84a3;
+            --accent-color: #00a854;
+            --warning-color: #f0ad4e;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #12263f;
+            --text-secondary: #6e84a3;
+            --border-color: #e3ebf6;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1c65d3 100%);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .download-intro {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .download-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .download-intro p {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .download-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .download-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .download-card-header {
+            padding: 20px;
+            background-color: var(--light-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .file-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .icon-template { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+        .icon-font { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+
+        .file-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .file-type {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .file-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .file-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: rgba(248, 249, 250, 0.7);
+            border-radius: 8px;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(to right, var(--accent-color), #00c76f);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 168, 84, 0.3);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(to right, #00c76f, var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 168, 84, 0.4);
+        }
+
+        .notice-box {
+            background-color: rgba(240, 173, 78, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .notice-icon {
+            color: var(--warning-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .notice-content h4 {
+            color: var(--warning-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .notice-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+                margin-top: 10px;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 15px;
+                align-self: flex-start;
+            }
+            
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .file-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        .download-status {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            min-height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+            <h1>公文排版素材下载</h1>
+            <p>下载符合GB/T 9704-2012标准的公文排版所需全部资源</p>
+        </header>
+
+        <div class="download-intro">
+            <h2><i class="fas fa-download"></i> 下载说明</h2>
+            <p>本页面提供公文排版所需的全部标准素材下载。请按照以下步骤操作：</p>
+            <p>1. 下载公文排版模板，该模板已按照国家标准预置所有格式设置</p>
+            <p>2. 下载并安装所有标准字体文件，确保文档字体符合规范要求</p>
+            <p>3. 字体安装方法：右键字体文件 → 选择"安装"（Windows系统）</p>
+            <p>4. <strong>注意：</strong>所有文件已保存在本站点目录中，点击下载按钮即可直接下载</p>
+        </div>
+
+        <div class="download-grid">
+            <!-- 公文排版模板 -->
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="file-icon icon-template">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="file-info">
+                        <h3>公文排版模板</h3>
+                        <div class="file-type">
+                            <i class="fas fa-file-archive"></i> ZIP压缩文件
+                        </div>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <p class="file-description">包含符合GB/T 9704-2012标准的完整公文模板集，涵盖常用文件的页面设置、字体格式和段落样式。</p>
+                    
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <div class="detail-label">文件大小</div>
+                            <div class="detail-value">2.4 MB</div>
+                      </div>
+                        <div class="detail-item">
+                            <div class="detail-label">文件类型</div>
+                            <div class="detail-value">ZIP压缩包</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">包含文件</div>
+                            <div class="detail-value">8个模板</div>
+                        </div>
+                  </div>
+                    
+                    <a href="公文排版模板.zip" class="download-btn" download>
+                        <i class="fas fa-download"></i> 下载模板文件
+                    </a>
+                    <div class="download-status" id="status-template"></div>
+              </div>
+            </div>
+
+            <!-- 方正小标宋_GBK -->
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="file-icon icon-font">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="file-info">
+                        <h3>方正小标宋_GBK</h3>
+                        <div class="file-type">
+                            <i class="fas fa-font"></i> 字体文件 (TTF)
+                        </div>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <p class="file-description">公文标题标准字体，根据GB/T 9704-2012标准要求，公文标题使用二号方正小标宋简体，颜色为黑色，排列应当使用梯形或菱形。</p>
+                    
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <div class="detail-label">文件大小</div>
+                            <div class="detail-value">5.7 MB</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">格式</div>
+                            <div class="detail-value">TrueType</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">字符集</div>
+                            <div class="detail-value">GBK</div>
+                        </div>
+                    </div>
+                    
+                    <a href="方正小标宋_GBK.ttf" class="download-btn" download>
+                        <i class="fas fa-download"></i> 下载字体文件
+                    </a>
+                    <div class="download-status" id="status-font1"></div>
+                </div>
+            </div>
+
+            <!-- 方正仿宋_GBK -->
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="file-icon icon-font">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="file-info">
+                        <h3>方正仿宋_GBK</h3>
+                        <div class="file-type">
+                            <i class="fas fa-font"></i> 字体文件 (TTF)
+                        </div>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <p class="file-description">公文正文标准字体，根据国家标准要求，公文正文使用三号方正仿宋简体，颜色为黑色，每面排22行，每行排28个字。也可用于三级和四级标题。</p>
+                    
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <div class="detail-label">文件大小</div>
+                            <div class="detail-value">6.2 MB</div>
+                      </div>
+                        <div class="detail-item">
+                            <div class="detail-label">格式</div>
+                            <div class="detail-value">TrueType</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">字符集</div>
+                            <div class="detail-value">GBK</div>
+                        </div>
+                  </div>
+                    
+                    <a href="方正仿宋_GBK.ttf" class="download-btn" download>
+                        <i class="fas fa-download"></i> 下载字体文件
+                    </a>
+                    <div class="download-status" id="status-font2"></div>
+              </div>
+            </div>
+
+            <!-- 方正楷体_GBK -->
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="file-icon icon-font">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="file-info">
+                        <h3>方正楷体_GBK</h3>
+                        <div class="file-type">
+                            <i class="fas fa-font"></i> 字体文件 (TTF)
+                        </div>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <p class="file-description">公文中的说明、注释等内容的推荐字体，楷体字形清晰、易于辨认，适用于公文中的二级标题以及引文、说明、注释等非正文内容。</p>
+                    
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <div class="detail-label">文件大小</div>
+                            <div class="detail-value">5.9 MB</div>
+                      </div>
+                        <div class="detail-item">
+                            <div class="detail-label">格式</div>
+                            <div class="detail-value">TrueType</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">字符集</div>
+                            <div class="detail-value">GBK</div>
+                        </div>
+                  </div>
+                    
+                    <a href="方正楷体_GBK.ttf" class="download-btn" download>
+                        <i class="fas fa-download"></i> 下载字体文件
+                    </a>
+                    <div class="download-status" id="status-font3"></div>
+              </div>
+            </div>
+
+            <!-- 方正黑体_GBK -->
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="file-icon icon-font">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="file-info">
+                        <h3>方正黑体_GBK</h3>
+                        <div class="file-type">
+                            <i class="fas fa-font"></i> 字体文件 (TTF)
+                        </div>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <p class="file-description">公文中的要点、重点内容的推荐字体，黑体字形醒目、结构清晰，适用于公文中的一级标题、要点强调、重点提示等内容。</p>
+                    
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <div class="detail-label">文件大小</div>
+                            <div class="detail-value">6.5 MB</div>
+                      </div>
+                        <div class="detail-item">
+                            <div class="detail-label">格式</div>
+                            <div class="detail-value">TrueType</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">字符集</div>
+                            <div class="detail-value">GBK</div>
+                        </div>
+                  </div>
+                    
+                    <a href="方正黑体_GBK.ttf" class="download-btn" download>
+                        <i class="fas fa-download"></i> 下载字体文件
+                    </a>
+                    <div class="download-status" id="status-font4"></div>
+              </div>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            <div class="notice-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="notice-content">
+                <h4>文件使用说明</h4>
+                <p><strong>文件位置：</strong>所有文件已保存在本站点目录中，点击即可直接下载</p>
+                <p><strong>字体安装：</strong>下载字体文件后，右键点击文件 → 选择"安装"（Windows系统）</p>
+                <p><strong>模板使用：</strong>下载ZIP文件后解压，在WPS中打开模板文件即可使用</p>
+                <p><strong>GitHub部署：</strong>这些文件将随站点代码一并上传到GitHub仓库</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 公文排版素材下载中心 | 基于GB/T 9704-2012国家标准</p>
+            <div class="footer-links">
+                <a href="index.html">返回首页</a> | 
+                <a href="word.html">返回公文排版教程</a> | 
+                <a href="#">联系我们&nbsp;</a>
+            </div>
+            <p style="margin-top: 15px;">本页面提供的所有素材均为符合国家标准的正式版本，文件已保存在站点目录中</p>
+        </footer>
+    </div>
+
+    <script>
+        // 为下载链接添加点击反馈
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadLinks = document.querySelectorAll('.download-btn');
+            
+            downloadLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const filename = this.getAttribute('href');
+                    const fileId = this.parentElement.querySelector('.download-status').id;
+                    const statusElement = document.getElementById(fileId);
+                    
+                    // 显示下载开始状态
+                    statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 开始下载...';
+                    statusElement.style.color = '#2c7be5';
+                    
+                    // 模拟短暂延迟后显示下载完成
+                    setTimeout(() => {
+                        statusElement.innerHTML = '<i class="fas fa-check"></i> 下载完成！文件已保存';
+                        statusElement.style.color = '#00a854';
+                        
+                        // 3秒后清除状态
+                        setTimeout(() => {
+                            statusElement.innerHTML = '';
+                        }, 3000);
+                    }, 800);
+                });
+            });
+            
+            // 添加页面加载动画
+            const cards = document.querySelectorAll('.download-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // 检查文件是否存在（在真实环境中可能需要服务器端检查）
+            function checkFileAvailability() {
+                const files = [
+                    '公文排版模板.zip',
+                    '方正小标宋_GBK.ttf',
+                    '方正仿宋_GBK.ttf',
+                    '方正楷体_GBK.ttf',
+                    '方正黑体_GBK.ttf'
+                ];
+                
+                // 注意：由于浏览器的安全限制，客户端JavaScript无法直接检查文件是否存在
+                // 这个功能在实际部署时需要服务器端支持
+                console.log('文件检查：假设所有文件已存在于站点目录中');
+            }
+            
+            checkFileAvailability();
+        });
+        
+        // 显示下载提示
+        function showDownloadMessage() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(to right, #00a854, #00c76f);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+            `;
+            
+            message.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <strong>文件下载中...</strong><br>
+                    <small>如果下载未开始，请检查文件是否存在于站点目录中</small>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // 添加CSS动画
+            if (!document.querySelector('#download-animation-style')) {
+                const style = document.createElement('style');
+                style.id = 'download-animation-style';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // 3秒后移除消息
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

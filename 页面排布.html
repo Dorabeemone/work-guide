@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPS页面排版操作指南 - GB/T 9704-2012</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --secondary-color: #6e84a3;
+            --accent-color: #00a854;
+            --warning-color: #f0ad4e;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #12263f;
+            --text-secondary: #6e84a3;
+            --border-color: #e3ebf6;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1c65d3 100%);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-card h2 i {
+            color: var(--accent-color);
+        }
+
+        .content-card h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--primary-color);
+        }
+
+        /* 操作步骤样式 */
+        .step-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .step {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed var(--border-color);
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            margin: -5px -10px 20px -10px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .step-content {
+            padding-left: 47px;
+        }
+
+        .wps-path {
+            background-color: rgba(44, 123, 229, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .wps-path:hover {
+            background-color: rgba(44, 123, 229, 0.15);
+        }
+
+        .wps-path i {
+            color: var(--primary-color);
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .parameter-table th, .parameter-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .parameter-table th {
+            background-color: var(--light-bg);
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 30%;
+        }
+
+        .parameter-table td {
+            background-color: white;
+        }
+
+        .parameter-table tr:nth-child(even) td {
+            background-color: rgba(248, 249, 250, 0.7);
+        }
+
+        .parameter-table tr:hover td {
+            background-color: rgba(44, 123, 229, 0.05);
+        }
+
+        .screenshot-container {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed var(--border-color);
+            transition: var(--transition);
+        }
+
+        .screenshot-container:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+
+        .screenshot-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .screenshot-caption {
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .important-note {
+            background-color: rgba(240, 173, 78, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 18px;
+            border-radius: 8px;
+            margin: 25px 0;
+            transition: var(--transition);
+        }
+
+        .important-note:hover {
+            background-color: rgba(240, 173, 78, 0.15);
+        }
+
+        .important-note h4 {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 侧边栏样式 */
+        .sidebar {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            transition: var(--transition);
+        }
+
+        .sidebar:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .sidebar h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quick-nav {
+            list-style-type: none;
+        }
+
+        .quick-nav li {
+            margin-bottom: 12px;
+        }
+
+        .quick-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .quick-nav a:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .quick-nav a.active {
+            background-color: rgba(44, 123, 229, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .wps-tip {
+            background-color: rgba(0, 168, 84, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 25px;
+            transition: var(--transition);
+        }
+
+        .wps-tip:hover {
+            background-color: rgba(0, 168, 84, 0.15);
+        }
+
+        .wps-tip h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wps-tip p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+                margin-top: 10px;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 15px;
+                align-self: flex-start;
+            }
+            
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+            
+            .step-content {
+                padding-left: 0;
+            }
+            
+            .step-header {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        .checklist {
+            list-style-type: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+        
+        .checklist li:hover {
+            background-color: rgba(0, 168, 84, 0.05);
+            border-radius: 6px;
+            padding: 8px 12px;
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        
+        .highlight {
+            background-color: rgba(255, 193, 7, 0.15);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .highlight:hover {
+            background-color: rgba(255, 193, 7, 0.25);
+        }
+        
+        .key-operation {
+            background-color: rgba(44, 123, 229, 0.1);
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .method-advantage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .advantage-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .advantage-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .screenshot-small {
+            max-width: 200px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="word.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回上一级
+            </a>
+            <h1>WPS页面排版操作指南</h1>
+            <p>GB/T 9704-2012标准 - 页面设置详细操作步骤</p>
+        </header>
+
+        <div class="main-content">
+            <div class="content-main">
+                <!-- 操作顺序提示 -->
+                <div class="content-card">
+                    <h2><i class="fas fa-clipboard-check"></i> 操作指南说明</h2>
+                    <p>本指南详细说明如何在WPS中实现GB/T 9704-2012标准规定的页面排版要求。请按照以下顺序操作：</p>
+                    
+                    <div class="checklist">
+                        <li>第一步：设置页边距和页面尺寸</li>
+                        <li>第二步：设置页码格式和位置（使用简便方法）</li>
+                        <li>第三步：检查并调整整体页面效果</li>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-exclamation-circle"></i> 重要提示</h4>
+                        <p>建议在开始撰写公文内容<strong>之前</strong>先进行页面设置，避免后期调整导致格式混乱。</p>
+                        <p>所有参数必须严格按照国家标准设置，不得随意更改。</p>
+                    </div>
+                </div>
+
+                <!-- 页边距设置 -->
+                <div class="content-card" id="page-margin">
+                    <h2><i class="fas fa-ruler-combined"></i> 页边距设置</h2>
+                    <p>根据GB/T 9704-2012标准，公文页边距必须设置为：</p>
+                    
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>参数名称</th>
+                                <th>标准值</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>上边距</td>
+                                <td><span class="highlight">3.7厘米</span></td>
+                                <td>从页面顶部到正文第一行的距离</td>
+                            </tr>
+                            <tr>
+                                <td>下边距</td>
+                                <td><span class="highlight">3.5厘米</span></td>
+                                <td>从页面底部到正文最后一行的距离</td>
+                            </tr>
+                            <tr>
+                                <td>左边距</td>
+                                <td><span class="highlight">2.8厘米</span></td>
+                                <td>从页面左侧到正文左边缘的距离</td>
+                            </tr>
+                            <tr>
+                                <td>右边距</td>
+                                <td><span class="highlight">2.6厘米</span></td>
+                                <td>从页面右侧到正文右边缘的距离</td>
+                            </tr>
+                            <tr>
+                                <td>页眉</td>
+                                <td><span class="highlight">1.5厘米</span></td>
+                                <td>从页面顶部到页眉文字的距离</td>
+                            </tr>
+                            <tr>
+                                <td>页脚</td>
+                                <td><span class="highlight">2.5厘米</span></td>
+                                <td>从页面底部到页脚文字的距离</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">打开页面设置</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在WPS文字中，点击顶部菜单栏的 <strong>"页面"</strong> 选项卡。</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>操作路径：页面 → 页边距 → 自定义页边距</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置页边距参数</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在"页面设置"对话框中：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>找到<strong>"页边距"</strong>界面</li>
+                                    <li>在"页边距"区域的四个输入框中，分别输入标准值：
+                                        <ul style="margin-left: 20px; margin-top: 5px;">
+                                            <li>上：<strong>3.7厘米</strong></li>
+                                            <li>下：<strong>3.5厘米</strong></li>
+
+                                            <li>左：<strong>2.8厘米</strong></li>
+                                            <li>右：<strong>2.6厘米</strong></li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">设置页眉页脚边距</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在同一个"页面设置"对话框中，切换到<strong>"版式"</strong>选项卡：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>找到"页眉"输入框，输入 <strong>1.5厘米</strong></li>
+                                    <li>找到"页脚"输入框，输入 <strong>2.5厘米</strong></li>
+                                    <li>确保"应用于"选项设置为 <strong>"整篇文档"</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-title">确认并应用设置</div>
+                            </div>
+                            <div class="step-content">
+                                <p>完成所有参数输入后：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>点击对话框底部的 <strong>"确定"</strong> 按钮</li>
+                                    <li>系统将应用页面设置到当前文档</li>
+                                    <li>检查页面标尺显示是否正确反映新的边距设置</li>
+                                </ol>
+                                
+                                <div class="screenshot-container">
+                                    <img src="页面设计.png" alt="WPS页面设置对话框" class="screenshot-img">
+                                    <p class="screenshot-caption">页面设置对话框示意图</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 页码设置（简化版） -->
+                <div class="content-card" id="page-number">
+                    <h2><i class="fas fa-sort-numeric-down"></i> 页码设置（简便方法）</h2>
+                    <p>根据GB/T 9704-2012标准，公文页码必须设置为：</p>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-info-circle"></i> 页码规范要求</h4>
+                        <p><strong>字体：</strong>宋体四号字</p>
+                        <p><strong>格式：</strong>"— 1 —"样式（前后各一个全角破折号，页码居中）</p>
+                        <p><strong>位置：</strong>奇数页在右下角，偶数页在左下角（使用"双面打印1"选项自动实现）</p>
+                    </div>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS简便操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">快速设置页码格式和位置</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="key-operation">
+                                    <strong>核心操作：</strong> 使用WPS的"双面打印1"选项自动设置奇偶页不同位置
+                                </div>
+                                
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>双击文档页面底部页脚区域，进入页脚编辑模式</li>
+                                    <li>在出现的"页眉和页脚工具"选项卡中，点击 <strong>"页码设置"</strong> 按钮</li>
+                                    <li>在弹出的页码设置对话框中，选择 <strong>"双面打印1"</strong> 选项</li>
+                                    <li>在样式选择区域，找到并选择 <strong>"— 1 —"</strong> 样式（带破折号的样式）</li>
+                                    <li>在"应用范围"下拉菜单中，选择 <strong>"整篇文档"</strong></li>
+                                    <li>点击 <strong>"确定"</strong> 按钮应用设置</li>
+                                </ol>
+                                
+                                <div class="wps-path">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>此时页码已自动插入，奇数页在右下角，偶数页在左下角，格式为"— 1 —"</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置页码字体格式</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>保持页脚编辑模式，选中页码文本框中的页码（数字和破折号）</li>
+                                    <li>右键点击选中的页码，从右键菜单中选择 <strong>"字体"</strong></li>
+                                    <li>在弹出的字体对话框中：
+                                        <ul style="margin-left: 20px; margin-top: 5px;">
+                                            <li>设置中文字体为 <strong>"宋体"</strong></li>
+                                            <li>设置字号为 <strong>"四号"</strong></li>
+                                            <li>确保字体颜色为黑色</li>
+                                        </ul>
+                                    </li>
+                                    <li>点击 <strong>"确定"</strong> 应用字体设置</li>
+                                    <li>重复上述步骤，检查并设置所有页面的页码字体格式</li>
+                                </ol>
+                                
+                                <div class="wps-path">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>现在页码格式完全符合国家标准：宋体四号字，"— 1 —"样式，奇偶页位置正确</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">退出并检查效果</div>
+                            </div>
+                            <div class="step-content">
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>双击文档正文区域，退出页脚编辑模式</li>
+                                    <li>翻看文档，检查奇数页和偶数页的页码位置是否正确</li>
+                                    <li>确认所有页码的字体和格式是否符合要求</li>
+                                    <li>如需调整，可再次双击页脚区域进入编辑模式进行修改</li>
+                                </ol>
+                                
+                                <div class="screenshot-container">
+                                    <img src="页码设置.png" alt="页码设置效果" class="screenshot-img">
+                                    <p class="screenshot-caption">奇数页页码在右下角，偶数页页码在左下角，格式为"— 1 —"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-lightbulb"></i> 方法优势</h4>
+                        <div class="method-advantage">
+                            <div class="advantage-card">
+                                <div class="advantage-number">1</div>
+                                <p><strong>一步设置位置：</strong>"双面打印1"选项自动处理奇偶页不同位置</p>
+                            </div>
+                            <div class="advantage-card">
+                                <div class="advantage-number">2</div>
+                                <p><strong>自带正确格式：</strong>直接选择"— 1 —"样式，无需手动添加破折号</p>
+                            </div>
+                            <div class="advantage-card">
+                                <div class="advantage-number">3</div>
+                                <p><strong>操作简单快捷：</strong>仅需2个主要步骤即可完成全部设置</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 常见问题 -->
+                <div class="content-card">
+                    <h2><i class="fas fa-question-circle"></i> 常见问题与解决</h2>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-tools"></i> 问题排查</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">Q1</div>
+                                <div class="step-title">找不到"双面打印1"选项</div>
+                            </div>
+                            <div class="step-content">
+                                <p><strong>可能原因：</strong>WPS版本不同，选项名称可能有差异</p>
+                                <p><strong>解决方法：</strong></p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>在页码设置对话框中，寻找类似"奇偶页不同"或"对称页边距"的选项</li>
+                                    <li>如果找不到，可手动设置：先插入普通页码，然后在"页眉和页脚工具"中勾选"奇偶页不同"，再分别调整位置</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">Q2</div>
+                                <div class="step-title">页码字体设置不生效</div>
+                            </div>
+                            <div class="step-content">
+                                <p><strong>可能原因：</strong>选中了整个文本框而不是仅页码数字</p>
+                                <p><strong>解决方法：</strong></p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>确保只选中页码数字部分（不包括破折号）</li>
+                                    <li>或者选中整个页码（包括破折号），统一设置为宋体四号</li>
+                                    <li>检查是否应用到了所有页码（可能需要逐页检查）</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">Q3</div>
+                                <div class="step-title">页边距设置后正文位置不对</div>
+                            </div>
+                            <div class="step-content">
+                                <p><strong>可能原因：</strong>文档中已有段落格式设置影响了实际显示效果</p>
+                                <p><strong>解决方法：</strong></p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>全选文档（Ctrl+A）</li>
+                                    <li>点击"开始"选项卡中的"清除格式"按钮</li>
+                                    <li>重新设置页边距</li>
+                                    <li>最后设置段落格式</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <h3><i class="fas fa-map-signs"></i> 操作导航</h3>
+                <ul class="quick-nav">
+                    <li><a href="#page-margin" class="active"><i class="fas fa-ruler-combined"></i> 页边距设置</a></li>
+                    <li><a href="#page-number"><i class="fas fa-sort-numeric-down"></i> 页码设置</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> 常见问题</a></li>
+                </ul>
+                
+                <div class="wps-tip">
+                    <h4><i class="fas fa-lightbulb"></i> 操作顺序建议</h4>
+                    <p><strong>1. 先设置页边距</strong> - 影响整个页面布局</p>
+                    <p><strong>2. 再设置页码</strong> - 基于页边距确定位置</p>
+                    <p><strong>3. 最后设置段落</strong> - 基于页面布局调整</p>
+                </div>
+                
+                <div class="wps-tip" style="background-color: rgba(44, 123, 229, 0.1); border-left-color: var(--primary-color); margin-top: 20px;">
+                    <h4><i class="fas fa-save"></i> 保存为模板</h4>
+                    <p>完成所有页面设置后，可保存为模板供后续使用：</p>
+                    <p>1. 点击"文件" → "另存为"</p>
+                    <p>2. 选择文件类型为"WPS文字模板"</p>
+                    <p>3. 命名为"公文标准模板"保存</p>
+                </div>
+                
+                <div class="wps-tip" style="background-color: rgba(240, 173, 78, 0.1); border-left-color: var(--warning-color); margin-top: 20px;">
+                    <h4><i class="fas fa-exclamation-triangle"></i> 特别提醒</h4>
+                    <p>页码设置完成后，务必检查：</p>
+                    <p>• 奇数页页码在右下角</p>
+                    <p>• 偶数页页码在左下角</p>
+                    <p>• 所有页码均为宋体四号字</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 WPS公文排版操作指南 | 基于GB/T 9704-2012国家标准</p>
+            <div class="footer-links">
+                <a href="index.html">返回首页</a> | 
+                <a href="word.html">返回公文排版教程</a> | 
+                <a href="downloads.html">素材下载</a>
+            </div>
+            <p style="margin-top: 15px;">本指南提供详细操作步骤，帮助您准确设置公文页面格式</p>
+        </footer>
+    </div>
+
+    <script>
+        // 为导航链接添加平滑滚动
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.quick-nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    
+                    // 添加当前active类
+                    this.classList.add('active');
+                    
+                    // 获取目标元素
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        
+                        // 平滑滚动到目标位置
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 20,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 页面加载动画
+            const contentCards = document.querySelectorAll('.content-card');
+            contentCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // 更新导航活动状态基于滚动位置
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.content-card[id]');
+                const navLinks = document.querySelectorAll('.quick-nav a');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // 为步骤添加点击展开/收起功能
+            const stepHeaders = document.querySelectorAll('.step-header');
+            stepHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const stepNumber = header.querySelector('.step-number');
+                
+                header.style.cursor = 'pointer';
+                
+                header.addEventListener('click', function() {
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                        stepNumber.style.backgroundColor = 'var(--accent-color)';
+                    } else {
+                        content.style.display = 'none';
+                        stepNumber.style.backgroundColor = 'var(--primary-color)';
+                    }
+                });
+            });
+            
+            // 图片加载失败处理
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const parent = this.parentElement;
+                    if (parent.classList.contains('screenshot-container')) {
+                        parent.innerHTML = `
+                            <i class="fas fa-image" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                            <p class="screenshot-caption">图片加载失败，请检查图片路径</p>
+                        `;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

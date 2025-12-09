@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPS段落排版操作指南 - GB/T 9704-2012</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --secondary-color: #6e84a3;
+            --accent-color: #00a854;
+            --warning-color: #f0ad4e;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #12263f;
+            --text-secondary: #6e84a3;
+            --border-color: #e3ebf6;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1c65d3 100%);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-card h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-card h2 i {
+            color: var(--accent-color);
+        }
+
+        .content-card h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--primary-color);
+        }
+
+        /* 规范要求样式 */
+        .requirement-box {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .requirement-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirement-list {
+            list-style-type: none;
+            margin-left: 10px;
+        }
+
+        .requirement-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .requirement-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirement-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* 操作步骤样式 */
+        .step-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .step {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed var(--border-color);
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            margin: -5px -10px 20px -10px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .step-content {
+            padding-left: 47px;
+        }
+
+        .wps-path {
+            background-color: rgba(44, 123, 229, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .wps-path:hover {
+            background-color: rgba(44, 123, 229, 0.15);
+        }
+
+        .wps-path i {
+            color: var(--primary-color);
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .parameter-table th, .parameter-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .parameter-table th {
+            background-color: var(--light-bg);
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 30%;
+        }
+
+        .parameter-table td {
+            background-color: white;
+        }
+
+        .parameter-table tr:nth-child(even) td {
+            background-color: rgba(248, 249, 250, 0.7);
+        }
+
+        .parameter-table tr:hover td {
+            background-color: rgba(44, 123, 229, 0.05);
+        }
+
+        .screenshot-container {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed var(--border-color);
+            transition: var(--transition);
+        }
+
+        .screenshot-container:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+
+        .screenshot-placeholder {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .screenshot-caption {
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .important-note {
+            background-color: rgba(240, 173, 78, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 18px;
+            border-radius: 8px;
+            margin: 25px 0;
+            transition: var(--transition);
+        }
+
+        .important-note:hover {
+            background-color: rgba(240, 173, 78, 0.15);
+        }
+
+        .important-note h4 {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 侧边栏样式 */
+        .sidebar {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            transition: var(--transition);
+        }
+
+        .sidebar:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .sidebar h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quick-nav {
+            list-style-type: none;
+        }
+
+        .quick-nav li {
+            margin-bottom: 12px;
+        }
+
+        .quick-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .quick-nav a:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .quick-nav a.active {
+            background-color: rgba(44, 123, 229, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .wps-tip {
+            background-color: rgba(0, 168, 84, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 25px;
+            transition: var(--transition);
+        }
+
+        .wps-tip:hover {
+            background-color: rgba(0, 168, 84, 0.15);
+        }
+
+        .wps-tip h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wps-tip p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+                margin-top: 10px;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 15px;
+                align-self: flex-start;
+            }
+            
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+            
+            .step-content {
+                padding-left: 0;
+            }
+            
+            .step-header {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        .highlight {
+            background-color: rgba(255, 193, 7, 0.15);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .highlight:hover {
+            background-color: rgba(255, 193, 7, 0.25);
+        }
+        
+        .key-operation {
+            background-color: rgba(44, 123, 229, 0.1);
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .checklist {
+            list-style-type: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+        
+        .checklist li:hover {
+            background-color: rgba(0, 168, 84, 0.05);
+            border-radius: 6px;
+            padding: 8px 12px;
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        
+        .warning-note {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .warning-note h4 {
+            color: #dc3545;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="word.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回上一级
+            </a>
+            <h1>WPS段落排版操作指南</h1>
+            <p>GB/T 9704-2012标准 - 段落设置详细操作步骤</p>
+        </header>
+
+        <div class="main-content">
+            <div class="content-main">
+                <!-- 段落排版规范说明 -->
+                <div class="content-card">
+                    <h2><i class="fas fa-clipboard-check"></i> 段落排版规范说明</h2>
+                    <p>根据GB/T 9704-2012标准，公文段落排版必须遵循以下规范：</p>
+                    
+                    <div class="requirement-box">
+                        <div class="requirement-title">
+                            <i class="fas fa-file-alt"></i> 核心要求
+                        </div>
+                        <ul class="requirement-list">
+                            <li><strong>行间距：</strong>正文28磅，大标题32磅，每行28字，每页22行</li>
+                            <li><strong>缩进：</strong>除<strong>文件大标题</strong>和作者日期外，所有标题和段首首行缩进2字符</li>
+                            <li><strong>段间距：</strong>段前段后0磅，正文之前的标题与正文之间空一行（28磅）</li>
+                            <li><strong>分页控制：</strong>关闭孤行控制和与下段同页，允许段中分页</li>
+                            <li><strong>换行规则：</strong>允许西文在单词中间换行</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-exclamation-circle"></i> 重要术语澄清</h4>
+                        <p><strong>大标题：</strong>指文件的总标题，如"关于XXX的通知"</p>
+                        <p><strong>一级/二级/三级标题：</strong>指文档内部的"一、二、三"、"(一)(二)(三)"、"1.2.3."等层级标题</p>
+                        <p>本指南中"大标题"特指文件总标题，不是文档内部层级标题</p>
+                    </div>
+                    
+                    <div class="checklist">
+                        <li>第一步：设置正文行间距和缩进</li>
+                        <li>第二步：设置大标题和各级标题行间距</li>
+                        <li>第三步：配置分页和换行规则</li>
+                        <li>第四步：检查并调整整体效果</li>
+                    </div>
+                </div>
+
+                <!-- 正文段落设置 -->
+                <div class="content-card" id="body-paragraph">
+                    <h2><i class="fas fa-paragraph"></i> 正文段落设置</h2>
+                    <p>根据国家标准，公文正文段落必须设置为：</p>
+                    
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>参数名称</th>
+                                <th>标准值</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>行间距</td>
+                                <td><span class="highlight">28磅</span></td>
+                                <td>固定值28磅，确保每页22行</td>
+                            </tr>
+                            <tr>
+                                <td>段前间距</td>
+                                <td><span class="highlight">0磅</span></td>
+                                <td>段落前不额外增加间距</td>
+                            </tr>
+                            <tr>
+                                <td>段后间距</td>
+                                <td><span class="highlight">0磅</span></td>
+                                <td>段落后不额外增加间距</td>
+                            </tr>
+                            <tr>
+                                <td>首行缩进</td>
+                                <td><span class="highlight">2字符</span></td>
+                                <td>相当于4个西文字符宽度</td>
+                            </tr>
+                            <tr>
+                                <td>对齐方式</td>
+                                <td><span class="highlight">两端对齐</span></td>
+                                <td>保证左右边缘整齐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">全选文档设置正文格式</div>
+                            </div>
+                            <div class="step-content">
+                                <p>按<strong>Ctrl+A</strong>全选文档，然后在WPS文字中：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>操作路径：开始 → 段落（右下角小箭头图标）</span>
+                                </div>
+                                <p>或右键点击选中的文本，选择<strong>"段落"</strong>选项。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置缩进和间距</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在"段落"对话框中，选择<strong>"缩进和间距"</strong>选项卡：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>在<strong>"缩进"</strong>区域：
+                                        <ul style="margin-left: 20px; margin-top: 5px;">
+                                            <li>设置"特殊格式"为<strong>"首行缩进"</strong></li>
+                                            <li>设置"磅值"为<strong>"2字符"</strong></li>
+                                        </ul>
+                                    </li>
+                                    <li>在<strong>"间距"</strong>区域：
+                                        <ul style="margin-left: 20px; margin-top: 5px;">
+                                            <li>设置"段前"为<strong>"0磅"</strong></li>
+                                            <li>设置"段后"为<strong>"0磅"</strong></li>
+                                            <li>设置"行距"为<strong>"固定值"</strong></li>
+                                            <li>设置"设置值"为<strong>"28磅"</strong></li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">设置对齐方式</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在同一个"缩进和间距"选项卡中：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>找到<strong>"常规"</strong>区域</li>
+                                    <li>设置"对齐方式"为<strong>"两端对齐"</strong></li>
+                                    <li>确保"大纲级别"为<strong>"正文文本"</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-title">单独调整不需要缩进的部分</div>
+                            </div>
+                            <div class="step-content">
+                                <p>完成全文档设置后，需要单独调整：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>选中<strong>文件大标题</strong>（文件总标题）</li>
+                                    <li>打开段落设置，将"特殊格式"改为<strong>"（无）"</strong></li>
+                                    <li>选中<strong>作者和日期</strong>（如有）</li>
+                                    <li>同样将"特殊格式"改为<strong>"（无）"</strong></li>
+                                    <li>保持这些部分的段前段后为0磅</li>
+                                </ol>
+                                
+                                <div class="warning-note">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> 特别注意</h4>
+                                    <p>文件大标题（文件总标题）和作者日期不需要首行缩进！</p>
+                                    <p>但一级标题（一、二、三）等文档内部标题需要首行缩进2字符！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  <div class="screenshot-container">
+                    <div class="screenshot-placeholder">
+                            <i class="fas fa-image"><img src="段落设置.png" width="750" height="75" alt=""/></i>
+                      </div>
+                      <p class="screenshot-caption">段落设置界面示意图</p>
+                    </div>
+                </div>
+
+                <!-- 大标题和标题行间距设置 -->
+                <div class="content-card" id="title-spacing">
+                    <h2><i class="fas fa-text-height"></i> 大标题和标题行间距设置</h2>
+                    <p>不同层级标题的行间距要求：</p>
+                    
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>标题类型</th>
+                                <th>行间距</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>文件大标题（总标题）</td>
+                                <td><span class="highlight">32磅</span></td>
+                                <td>文件最上方的总标题</td>
+                            </tr>
+                            <tr>
+                                <td>一级标题（一、二、三）</td>
+                                <td><span class="highlight">28磅</span></td>
+                                <td>与正文相同，但需首行缩进2字符</td>
+                            </tr>
+                            <tr>
+                                <td>二级标题（(一)(二)(三)）</td>
+                                <td><span class="highlight">28磅</span></td>
+                                <td>与正文相同，需首行缩进2字符</td>
+                            </tr>
+                            <tr>
+                                <td>三级标题（1. 2. 3.）</td>
+                                <td><span class="highlight">28磅</span></td>
+                                <td>与正文相同，需首行缩进2字符</td>
+                            </tr>
+                            <tr>
+                                <td>正文之前的标题与正文间距</td>
+                                <td><span class="highlight">空一行（28磅）</span></td>
+                                <td>在标题后按一次Enter键，形成空行</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">设置文件大标题行间距</div>
+                            </div>
+                            <div class="step-content">
+                                <p>选中<strong>文件大标题</strong>（文件总标题）：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>打开段落设置对话框</li>
+                                    <li>设置"行距"为<strong>"固定值"</strong></li>
+                                    <li>设置"设置值"为<strong>"32磅"</strong></li>
+                                    <li>确保"特殊格式"为<strong>"（无）"</strong>（无缩进）</li>
+                                    <li>设置"对齐方式"为<strong>"居中"</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置标题分行规则</div>
+                            </div>
+                            <div class="step-content">
+                                <p>当标题需要分行时（特别是大标题）：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>在需要分行处按<strong>Shift+Enter</strong>（软回车）</li>
+                                    <li>确保分行时<strong>词义完整</strong>，不在词语中间断开</li>
+                                    <li>保持分行后<strong>排列对称、工整美观</strong></li>
+                                    <li>避免单字成行（如"的"、"和"等单独在一行）</li>
+                                </ol>
+                                
+                                <div class="key-operation">
+                                    <strong>分行技巧：</strong> 使用Shift+Enter（软回车）而不是直接按Enter（硬回车），可以保持标题的段落统一性。
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">设置正文前空行</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在正文之前的标题（通常是文件大标题）与正文之间：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>将光标定位在标题的末尾</li>
+                                    <li>按一次<strong>Enter键</strong></li>
+                                    <li>这将创建一个空行，行间距为28磅（与正文相同）</li>
+                                    <li>确保这个空行的段前段后间距为0磅</li>
+                                </ol>
+                                
+                                <div class="important-note">
+                                    <h4><i class="fas fa-lightbulb"></i> 实际操作</h4>
+                                    <p>只需按一次Enter键创建空行即可，WPS会自动应用前面设置的28磅行间距。</p>
+                                    <p>无需手动设置这个空行的具体高度。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="important-note">
+                        <h4><i class="fas fa-info-circle"></i> 关于作者和日期的特别说明</h4>
+                        <p>根据规范：对于除演讲稿、署名文章外的普通工作文件，通常不标注作者和日期。</p>
+                        <p>如需标注作者和日期，请按以下要求：</p>
+                        <p>1. 使用正文字体（方正仿宋_GBK三号字）</p>
+                        <p>2. 按字体要求居中排布</p>
+                        <p>3. 不需要首行缩进（特殊格式设置为"无"）</p>
+                        <p>4. 行间距与正文相同（28磅）</p>
+                    </div>
+                </div>
+
+                <!-- 分页和换行设置 -->
+                <div class="content-card" id="page-break">
+                    <h2><i class="fas fa-file-contract"></i> 分页与换行设置</h2>
+                    <p>公文排版中的分页和换行特殊规则：</p>
+                    
+                    <div class="requirement-box">
+                        <div class="requirement-title">
+                            <i class="fas fa-cogs"></i> 分页换行规则
+                        </div>
+                        <ul class="requirement-list">
+                            <li><strong>关闭孤行控制：</strong>允许段落首行或末行单独出现在页首或页尾</li>
+                            <li><strong>关闭与下段同页：</strong>允许标题和正文分页显示</li>
+                            <li><strong>允许段中分页：</strong>长段落可以跨页显示</li>
+                            <li><strong>允许西文在单词中间换行：</strong>保证行尾对齐，避免右侧留白过多</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-desktop"></i> WPS操作步骤</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-title">全选文档设置分页规则</div>
+                            </div>
+                            <div class="step-content">
+                                <p>按<strong>Ctrl+A</strong>全选文档，打开段落设置：</p>
+                                <div class="wps-path">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>操作路径：开始 → 段落 → 换行和分页选项卡</span>
+                                </div>
+                                <p>在"换行和分页"选项卡中设置：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li><strong>取消勾选</strong>"孤行控制"复选框</li>
+                                    <li><strong>取消勾选</strong>"与下段同页"复选框</li>
+                                    <li><strong>勾选</strong>"段中不分页"复选框（注意：WPS中此选项为反向逻辑）</li>
+                                    <li>确保"段前分页"未勾选</li>
+                                </ol>
+                                
+                                <div class="key-operation">
+                                    <strong>注意：</strong> WPS中"段中不分页"选项的逻辑是：勾选表示"不允许段中分页"，但国标要求允许段中分页，所以我们需要勾选此选项，实际效果是允许分页。
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-title">设置西文换行规则</div>
+                            </div>
+                            <div class="step-content">
+                                <p>在同一个"换行和分页"选项卡中：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>找到<strong>"换行"</strong>区域</li>
+                                    <li>勾选<strong>"允许西文在单词中间换行"</strong>复选框</li>
+                                    <li>取消勾选"按中文习惯控制首尾字符"</li>
+                                    <li>取消勾选"允许标点溢出边界"</li>
+                                </ol>
+                                
+                                <div class="wps-path">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>此设置确保西文长单词可以在适当位置换行，避免行尾留白过多，保持版面整洁</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-title">应用并检查效果</div>
+                            </div>
+                            <div class="step-content">
+                                <p>完成所有设置后：</p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>点击"确定"应用所有设置</li>
+                                    <li>滚动文档检查分页效果</li>
+                                    <li>查看西文单词的换行情况</li>
+                                    <li>使用打印预览功能（Ctrl+F2）检查整体排版</li>
+                                    <li>特别注意标题和正文的分页是否自然</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="screenshot-container">
+                        <div class="screenshot-placeholder">
+                            <i class="fas fa-image"><img src="换行与分页.png" width="435" height="430" alt=""/></i>
+                        </div>
+                        <p class="screenshot-caption">换行和分页设置对话框示意图 - 显示西文换行和分页选项</p>
+                    </div>
+                </div>
+
+                <!-- 常见问题 -->
+                <div class="content-card">
+                    <h2><i class="fas fa-question-circle"></i> 常见问题与解决</h2>
+                    
+                    <div class="step-container">
+                        <h3><i class="fas fa-tools"></i> 问题排查</h3>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">Q1</div>
+                                <div class="step-title">设置了28磅行距，但每页不是22行</div>
+                            </div>
+                            <div class="step-content">
+                                <p><strong>可能原因：</strong>字体大小、页边距或页面高度设置影响</p>
+                                <p><strong>解决方法：</strong></p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>确认使用"方正仿宋_GBK三号"字体（高度约5.64mm）</li>
+                                    <li>检查页边距是否符合标准（上3.7cm，下3.5cm）</li>
+                                    <li>确认页面为A4尺寸（高29.7cm）</li>
+                                    <li>计算公式：可排版高度 = 29.7 - 3.7 - 3.5 = 22.5cm</li>
+                                    <li>28磅 ≈ 0.99cm，22.5 ÷ 0.99 ≈ 22.7行</li>
+                                    <li>实际显示22行是正常的，符合国标</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">Q2</div>
+                                <div class="step-title">西文单词被不合理地断开</div>
+                            </div>
+                            <div class="step-content">
+                                <p><strong>可能原因：</strong>换行规则设置不当或文档中有手动换行符</p>
+                                <p><strong>解决方法：</strong></p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>确保勾选"允许西文在单词中间换行"</li>
+                                    <li>检查是否有不必要的软回车（Shift+Enter）</li>
+                                    <li>对于重要文档，可手动调整换行位置</li>
+                                    <li>或适当调整字符间距，使换行更合理</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-header">
+                                <div class="step-number">Q3</div>
+                                <div class="step-title">标题和正文意外分页</div>
+                            </div>
+                            <div class="step-content">
+                                <p><strong>可能原因：</strong>分页设置或文档内容长度影响</p>
+                                <p><strong>解决方法：</strong></p>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>确认已取消勾选"与下段同页"</li>
+                                    <li>如果希望特定标题和正文不分页，可单独选中这些段落</li>
+                                    <li>在"换行和分页"选项卡中勾选"与下段同页"</li>
+                                    <li>或适当调整前面段落的内容长度</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <h3><i class="fas fa-map-signs"></i> 操作导航</h3>
+                <ul class="quick-nav">
+                    <li><a href="#body-paragraph" class="active"><i class="fas fa-paragraph"></i> 正文段落设置</a></li>
+                    <li><a href="#title-spacing"><i class="fas fa-text-height"></i> 标题行间距</a></li>
+                    <li><a href="#page-break"><i class="fas fa-file-contract"></i> 分页与换行</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> 常见问题</a></li>
+                </ul>
+                
+                <div class="wps-tip">
+                    <h4><i class="fas fa-lightbulb"></i> 操作顺序建议</h4>
+                    <p><strong>1. 先完成页面设置</strong> - 确定页边距、页码等</p>
+                    <p><strong>2. 设置字体格式</strong> - 应用正确的字体和字号</p>
+                    <p><strong>3. 进行段落排版</strong> - 按本指南设置段落格式</p>
+                    <p><strong>4. 最后检查整体</strong> - 使用打印预览检查效果</p>
+                </div>
+                
+                <div class="wps-tip" style="background-color: rgba(44, 123, 229, 0.1); border-left-color: var(--primary-color); margin-top: 20px;">
+                    <h4><i class="fas fa-undo-alt"></i> 快速重置格式</h4>
+                    <p>如果格式混乱，可快速重置：</p>
+                    <p>1. 按Ctrl+A全选文档</p>
+                    <p>2. 点击"开始"选项卡中的"清除格式"按钮</p>
+                    <p>3. 重新按照本指南步骤设置</p>
+                </div>
+                
+                <div class="wps-tip" style="background-color: rgba(240, 173, 78, 0.1); border-left-color: var(--warning-color); margin-top: 20px;">
+                    <h4><i class="fas fa-exclamation-triangle"></i> 必须检查项</h4>
+                    <p>• 文件大标题行间距32磅，无缩进</p>
+                    <p>• 所有正文和内部标题首行缩进2字符</p>
+                    <p>• 正文行间距28磅，每页约22行</p>
+                    <p>• 关闭孤行控制和与下段同页</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 WPS公文排版操作指南 | 基于GB/T 9704-2012国家标准</p>
+            <div class="footer-links">
+                <a href="index.html">返回首页</a> | 
+                <a href="word.html">返回公文排版教程&nbsp;</a> | 
+                <a >联系我们&nbsp;</a>
+            </div>
+            <p style="margin-top: 15px;">本指南提供详细操作步骤，帮助您准确设置公文段落格式</p>
+        </footer>
+    </div>
+
+    <script>
+        // 为导航链接添加平滑滚动
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.quick-nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有active类
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    
+                    // 添加当前active类
+                    this.classList.add('active');
+                    
+                    // 获取目标元素
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        
+                        // 平滑滚动到目标位置
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 20,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 页面加载动画
+            const contentCards = document.querySelectorAll('.content-card');
+            contentCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // 更新导航活动状态基于滚动位置
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.content-card[id]');
+                const navLinks = document.querySelectorAll('.quick-nav a');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // 为步骤添加点击展开/收起功能
+            const stepHeaders = document.querySelectorAll('.step-header');
+            stepHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const stepNumber = header.querySelector('.step-number');
+                
+                header.style.cursor = 'pointer';
+                
+                header.addEventListener('click', function() {
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                        stepNumber.style.backgroundColor = 'var(--accent-color)';
+                    } else {
+                        content.style.display = 'none';
+                        stepNumber.style.backgroundColor = 'var(--primary-color)';
+                    }
+                });
+            });
+            
+            // 添加行数计算器
+            const lineCalculator = document.createElement('div');
+            lineCalculator.innerHTML = `
+                <div style="background: rgba(0,168,84,0.1); border-radius:8px; padding:15px; margin:15px 0;">
+                    <h4 style="color:#00a854; margin-bottom:10px;"><i class="fas fa-calculator"></i> 行数计算验证</h4>
+                    <p style="margin:5px 0; font-size:0.9em;">A4页面高度：29.7厘米</p>
+                    <p style="margin:5px 0; font-size:0.9em;">上下边距：3.7 + 3.5 = 7.2厘米</p>
+                    <p style="margin:5px 0; font-size:0.9em;">可排版高度：29.7 - 7.2 = <strong>22.5厘米</strong></p>
+                    <p style="margin:5px 0; font-size:0.9em;">28磅 ≈ 0.99厘米</p>
+                    <p style="margin:5px 0; font-size:0.9em;">理论行数：22.5 ÷ 0.99 ≈ <strong>22.7行</strong></p>
+                    <p style="margin:5px 0; font-size:0.9em; color:#00a854;"><strong>实际显示22行符合国家标准</strong></p>
+                </div>
+            `;
+            
+            // 插入到正文段落设置部分
+            const bodyParagraphCard = document.querySelector('#body-paragraph .content-card');
+            if (bodyParagraphCard) {
+                const firstStepContainer = bodyParagraphCard.querySelector('.step-container');
+                if (firstStepContainer) {
+                    firstStepContainer.insertAdjacentElement('beforebegin', lineCalculator);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

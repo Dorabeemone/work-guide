@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>常用办公软件指导 - 一站式学习平台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+ :root {
+    --primary-color: #2c7be5;
+    --secondary-color: #6e84a3;
+    --accent-color: #00a854;
+    --light-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #12263f;
+    --text-secondary: #6e84a3;
+    --border-color: #e3ebf6;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, #1c65d3 100%);
+    border-radius: var(--border-radius);
+    color: white;
+    box-shadow: var(--shadow);
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-header {
+    padding: 20px;
+    background-color: var(--light-bg);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+  }
+
+  .card-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .card-body {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-content {
+    flex-grow: 1;
+  }
+
+  .software-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto 20px;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+  }
+
+  .software-image:hover {
+    transform: scale(1.02);
+  }
+
+  .download-btn {
+    display: inline-block;
+    background: linear-gradient(to right, var(--accent-color), #00c76f);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 168, 84, 0.3);
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .download-btn:hover {
+    background: linear-gradient(to right, #00c76f, var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 168, 84, 0.4);
+  }
+
+  .feature-list {
+    list-style-type: none;
+    margin-top: 20px;
+  }
+
+  .feature-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list li::before {
+    content: "✓";
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.1rem;
+  }
+
+  .badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-left: 10px;
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+  }
+
+  .footer-links {
+    margin-top: 10px;
+  }
+
+  .footer-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: var(--transition);
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 2rem;
+    }
+    
+    .main-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .card-header {
+      padding: 15px;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 10px;
+    }
+    
+    .header {
+      padding: 20px 15px;
+    }
+    
+    .header h1 {
+      font-size: 1.8rem;
+    }
+    
+    .card-title {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* 特色部分样式 */
+  .highlight {
+    background-color: rgba(44, 123, 229, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .wps-feature {
+    border-top: 4px solid var(--accent-color);
+  }
+
+  .word-feature {
+    border-top: 4px solid #2b579a;
+  }
+
+  .excel-feature {
+    border-top: 4px solid #217346;
+  }
+
+  .instruction {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>常用办公软件指导网站</h1>
+      <p>一站式办公软件学习平台 | 提供WPS等办公软件的下载、教程和排版规范指南</p>
+    </header>
+
+    <main class="main-content">
+      <!-- WPS卡片（精简版） -->
+      <div class="card wps-feature">
+        <div class="card-header">
+          <h2 class="card-title">WPS Office 办公套件</h2>
+          <p class="card-subtitle">免费、高效、兼容的办公解决方案[citation:1]</p>
+        </div>
+        <div class="card-body">
+          <div class="card-content">
+            <a href="https://www4.aldeee.com/down/asdees/764664?type=manager&title=WPS%20Office" target="_blank">
+              <img src="WPS.png" alt="WPS Office" width="240" height="230" class="software-image">
+            </a>
+            <p>WPS Office是一款由金山公司开发的办公软件套装，包含文字、表格和演示三大核心组件，完全兼容主流文档格式。</p>
+            
+            <ul class="feature-list">
+              <li>个人版<span class="highlight">免费使用</span></li>
+              <li>支持跨平台（Windows、Mac、Linux、移动端）</li>
+              <li>集成云存储与多人协作功能</li>
+              <li>内置海量模板与AI智能助手[citation:4]</li>
+            </ul>
+          </div>
+          <a href="https://www4.aldeee.com/down/asdees/764664?type=manager&title=WPS%20Office" class="download-btn" target="_blank">
+            立即下载 WPS Office
+          </a>
+          <p class="instruction">点击上方图标或按钮下载最新版WPS</p>
+        </div>
+      </div>
+
+      <!-- WPS 文字 (Writer) 卡片（原Word卡片） -->
+      <div class="card word-feature">
+        <div class="card-header">
+          <h2 class="card-title">WPS 文字 (Writer) <span class="badge">GB/T 9704-2012</span></h2>
+          <p class="card-subtitle">专业文档排版与党政机关公文格式指南</p>
+        </div>
+        <div class="card-body">
+          <div class="card-content">
+            <a href="word.html">
+              <!-- 注意：此处图片链接未在搜索结果中找到WPS Writer专用图，暂保留原图或可替换为通用图标 -->
+              <img src="word - 副本.png" alt="WPS 文字处理" width="200" height="200" class="software-image">
+            </a>
+            <p>掌握使用WPS文字组件进行专业文档排版的技巧。本指南重点讲解如何遵循《党政机关公文格式》国家标准(GB/T 9704-2012)，该标准由中共中央办公厅、国务院办公厅提出，适用于各级党政机关和其他官方组织制发的公文。能有效辅助符合规范的公文制作。</p>
+            
+            <ul class="feature-list">
+              <li><span class="highlight">公文格式规范详解（页边距、字体、字号等）</span></li>
+              <li>WPS中样式与模板的应用</li>
+              <li>目录自动生成与页眉页脚设置</li>
+              <li>文档的审阅与修订功能</li>
+              <li>按照国标进行图文混排的技巧</li>
+            </ul>
+          </div>
+          <!-- 核心修改：页面链接保持不变，仍指向word.html -->
+          <a href="word.html" class="download-btn">
+            进入 公文格式规范学习中心
+          </a>
+          <p class="instruction">点击上方图标或按钮学习GB/T 9704-2012排版规范</p>
+        </div>
+      </div>
+
+      <!-- Excel卡片（保持不变） -->
+      <div class="card excel-feature">
+        <div class="card-header">
+          <h2 class="card-title">WPS 表格 (Spreadsheets)</h2>
+          <p class="card-subtitle">高效数据管理与分析工具</p>
+        </div>
+        <div class="card-body">
+          <div class="card-content">
+            <a href="#">
+              <img src="excel(1).png" alt="WPS 表格" width="230" height="230" class="software-image">
+            </a>
+            <p>WPS表格是功能强大的电子表格组件，适用于数据整理、分析、计算和可视化，提升工作效率和决策质量。</p>
+            
+            <ul class="feature-list">
+              <li>基础公式与<span class="highlight">函数应用</span></li>
+              <li>数据透视表与图表制作</li>
+              <li>条件格式与数据验证</li>
+              <li>数据分析与可视化技巧</li>
+            </ul>
+          </div>
+          <a href="#" class="download-btn">
+            进入 表格学习中心 (开发中)
+          </a>
+          <p class="instruction">WPS表格学习中心即将上线，敬请期待</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 常用办公软件指导网站 | 旨在提供优质的办公软件学习资源</p>
+	 <p>网站制作者：哆啦B梦-Ginkgo_Nut（新生实践课作业）</p>
+      <div class="footer-links">
+        <a href="#">关于我们</a> | 
+        <a href="#">联系我们</a> | 
+        <a href="#">使用条款</a>
+      </div>
+      <p style="margin-top: 15px;">本网站提供的软件下载链接来自官方渠道，请放心使用</p>
+    </footer>
+  </div>
+
+  <script>
+     // 添加简单的交互效果
+    document.addEventListener('DOMContentLoaded', function() {
+      // 为下载按钮添加点击反馈
+      const downloadButtons = document.querySelectorAll('.download-btn');
+      downloadButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          // 如果按钮链接是"#"，则阻止跳转并显示提示
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            const originalText = this.textContent;
+            this.textContent = '功能开发中，敬请期待！';
+            this.style.background = 'linear-gradient(to right, #6e84a3, #95a5c6)';
+            
+            setTimeout(() => {
+              this.textContent = originalText;
+              this.style.background = 'linear-gradient(to right, var(--accent-color), #00c76f)';
+            }, 2000);
+          }
+        });
+      });
+
+      // 为卡片添加点击效果
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          // 如果不是点击在链接上，则添加轻微效果
+          if (!e.target.closest('a')) {
+            this.style.transform = 'scale(0.99)';
+            setTimeout(() => {
+              this.style.transform = '';
+            }, 200);
+          }
+        });
+      });
+
+      // 页面加载动画
+      const cardsAndHeader = document.querySelectorAll('.card, .header');
+      cardsAndHeader.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+      });
+
+      let delay = 0;
+      cardsAndHeader.forEach(el => {
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, delay);
+        delay += 150;
+      });
+    });
+  </script>
+</body>
+</html>
