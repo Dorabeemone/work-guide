@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - WPS公文排版指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --secondary-color: #6e84a3;
+            --accent-color: #00a854;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #12263f;
+            --text-secondary: #6e84a3;
+            --border-color: #e3ebf6;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1c65d3 100%);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 头部装饰纹理 */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .about-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .about-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-section {
+            margin-bottom: 35px;
+        }
+
+        .about-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .section-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .icon-designer { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+        .icon-version { background: linear-gradient(135deg, #9d50bb, #6e48aa); } /* 新增：版本模块图标渐变 */
+        .icon-reason { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+        .icon-thanks { background: linear-gradient(135deg, #56ab2f, #a8e063); }
+
+        .section-content {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding-left: 60px;
+        }
+
+        .section-content p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+                margin-top: 10px;
+            }
+
+            .about-card {
+                padding: 30px 20px;
+            }
+
+            .section-content {
+                padding-left: 0;
+            }
+
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 15px;
+                align-self: flex-start;
+            }
+            
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .section-content {
+                font-size: 1rem;
+            }
+
+            .section-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+            <h1>关于我们</h1>
+            <p>一站式办公软件指南网站 设计与开发说明</p>
+        </header>
+
+        <div class="about-card">
+            <!-- 网站设计者 -->
+            <div class="about-section">
+                <div class="section-title">
+                    <div class="section-icon icon-designer">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h2>网站设计者</h2>
+                </div>
+                <div class="section-content">
+                    <p><span class="highlight">华中科技大学 银杏果</span></p>
+                </div>
+          </div>
+
+            <!-- 新增：网站版本模块 -->
+            <div class="about-section">
+                <div class="section-title">
+                    <div class="section-icon icon-version">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h2>网站版本</h2>
+                </div>
+              <div class="section-content">
+                <p><span class="highlight">网站版本v1.0</span></p>
+                  <p>当前为网站首个正式版本，包含公文排版教程、素材下载核心功能，后续将根据使用反馈持续优化迭代，并开发新的功能。</p>
+                </div>
+            </div>
+
+            <!-- 设计起因 -->
+            <div class="about-section">
+                <div class="section-title">
+                    <div class="section-icon icon-reason">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h2>设计起因</h2>
+                </div>
+              <div class="section-content">
+                <p>这其实本来是作者的新生实践课结课作业</p>
+                </div>
+            </div>
+
+            <!-- 特别鸣谢 -->
+            <div class="about-section">
+                <div class="section-title">
+                    <div class="section-icon icon-thanks">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>特别鸣谢</h2>
+                </div>
+                <div class="section-content">
+                    <p>感谢 <span class="highlight">华中科技大学学生会联络服务部 刘雨欣学姐</span> 提供的支持，以及 <span class="highlight">deepseek</span> 提供的专业指导，让本网站的开发和完善得以顺利完成。</p>
+                </div>
+            </div>
+      </div>
+
+        <footer class="footer">
+            <p>© 2025 WPS公文排版指南 | 基于GB/T 9704-2012国家标准</p>
+            <div class="footer-links">
+                <a href="index.html">返回首页</a> | 
+                <a href="联系我们.html">联系我们</a>
+            </div>
+            <p style="margin-top: 15px;">本网站为华中科技大学新生实践课作业，仅作学习交流使用</p>
+        </footer>
+</div>
+
+<script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 元素初始化隐藏
+            const elements = document.querySelectorAll('.about-card, .header, .footer');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+            });
+
+            // 逐元素显示动画
+            let delay = 0;
+            elements.forEach(el => {
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, delay);
+                delay += 200;
+            });
+
+            // 返回按钮交互
+            const backBtn = document.querySelector('.back-btn');
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // 模拟返回动画
+                this.style.transform = 'translateY(-50%) scale(0.95)';
+                setTimeout(() => {
+                    window.location.href = this.getAttribute('href');
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - WPS公文排版指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --secondary-color: #6e84a3;
+            --accent-color: #00a854;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #12263f;
+            --text-secondary: #6e84a3;
+            --border-color: #e3ebf6;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1c65d3 100%);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 头部装饰纹理 */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-section {
+            margin-bottom: 35px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .icon-author { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+        .icon-phone { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+        .icon-qq { background: linear-gradient(135deg, #56ab2f, #a8e063); }
+
+        .contact-content {
+            flex: 1;
+        }
+
+        .contact-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* 新增：联系方式可复制样式（提升体验） */
+        .copyable {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background-color: var(--light-bg);
+        }
+
+        .copyable:hover {
+            background-color: var(--border-color);
+        }
+
+        .copyable::after {
+            content: '点击复制';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--text-primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .copyable:hover::after {
+            opacity: 1;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+                margin-top: 10px;
+            }
+
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .contact-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .contact-icon {
+                margin-top: 0;
+            }
+
+            .contact-value {
+                font-size: 1.1rem;
+            }
+
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin-bottom: 15px;
+                align-self: flex-start;
+            }
+            
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .contact-title {
+                font-size: 1.3rem;
+            }
+
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+            <h1>联系我们</h1>
+            <p>WPS公文排版指南网站 作者联系方式</p>
+        </header>
+
+        <div class="contact-card">
+            <!-- 作者信息 -->
+            <div class="contact-section">
+                <div class="contact-icon icon-author">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-title">作者</div>
+                    <div class="contact-value highlight">华中科技大学计算机科学与技术学院 银杏果</div>
+                </div>
+            </div>
+
+            <!-- 电话信息 -->
+            <div class="contact-section">
+                <div class="contact-icon icon-phone">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-title">电话</div>
+                    <div class="contact-value">
+                        <span class="copyable" id="phone-copy">15657860268</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QQ信息 -->
+            <div class="contact-section">
+                <div class="contact-icon icon-qq">
+                    <i class="fab fa-qq"></i>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-title">QQ</div>
+                    <div class="contact-value">
+                        <span class="copyable" id="qq-copy">2096512077</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 WPS公文排版指南 | 基于GB/T 9704-2012国家标准</p>
+            <div class="footer-links">
+                <a href="index.html">返回首页</a> | 
+                <a href="关于我们.html">关于我们</a>
+            </div>
+            <p style="margin-top: 15px;">本网站为华中科技大学新生实践课作业，仅作学习交流使用</p>
+        </footer>
+    </div>
+
+    <script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 元素初始化隐藏
+            const elements = document.querySelectorAll('.contact-card, .header, .footer');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+            });
+
+            // 逐元素显示动画
+            let delay = 0;
+            elements.forEach(el => {
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, delay);
+                delay += 200;
+            });
+
+            // 返回按钮交互
+            const backBtn = document.querySelector('.back-btn');
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // 模拟返回动画
+                this.style.transform = 'translateY(-50%) scale(0.95)';
+                setTimeout(() => {
+                    window.location.href = this.getAttribute('href');
+                }, 150);
+            });
+
+            // 联系方式复制功能（提升体验）
+            const copyPhone = document.getElementById('phone-copy');
+            const copyQq = document.getElementById('qq-copy');
+
+            // 复制函数
+            function copyToClipboard(element) {
+                const text = element.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    // 复制成功提示
+                    const originalText = element.textContent;
+                    element.textContent = '复制成功！';
+                    element.style.color = var(--accent-color);
+                    setTimeout(() => {
+                        element.textContent = originalText;
+                        element.style.color = '';
+                    }, 1500);
+                }).catch(err => {
+                    alert('复制失败，请手动复制：' + text);
+                });
+            }
+
+            // 绑定复制事件
+            copyPhone.addEventListener('click', () => copyToClipboard(copyPhone));
+            copyQq.addEventListener('click', () => copyToClipboard(copyQq));
+        });
+    </script>
+</body>
+</html>

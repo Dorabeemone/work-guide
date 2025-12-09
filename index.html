@@ -8,10 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
- :root {
+  :root {
     --primary-color: #2c7be5;
     --secondary-color: #6e84a3;
     --accent-color: #00a854;
+    --coming-soon-color: #735ccb; /* 新增：敬请期待卡片主题色 */
     --light-bg: #f8f9fa;
     --card-bg: #ffffff;
     --text-primary: #12263f;
@@ -133,6 +134,26 @@
     transform: scale(1.02);
   }
 
+  /* 新增：敬请期待图片样式 */
+  .coming-soon-img {
+    width: 180px;
+    height: 180px;
+    background-color: rgba(115, 92, 203, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 3px solid var(--coming-soon-color);
+    padding: 20px;
+  }
+
+  .coming-soon-img svg {
+    width: 100px;
+    height: 100px;
+    color: var(--coming-soon-color);
+  }
+
   .download-btn {
     display: inline-block;
     background: linear-gradient(to right, var(--accent-color), #00c76f);
@@ -155,6 +176,17 @@
     background: linear-gradient(to right, #00c76f, var(--accent-color));
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 168, 84, 0.4);
+  }
+
+  /* 新增：敬请期待按钮样式 */
+  .coming-soon-btn {
+    background: linear-gradient(to right, var(--coming-soon-color), #8a77d8);
+    box-shadow: 0 4px 15px rgba(115, 92, 203, 0.3);
+  }
+
+  .coming-soon-btn:hover {
+    background: linear-gradient(to right, #8a77d8, var(--coming-soon-color));
+    box-shadow: 0 6px 20px rgba(115, 92, 203, 0.4);
   }
 
   .feature-list {
@@ -181,6 +213,12 @@
     font-size: 1.1rem;
   }
 
+  /* 新增：敬请期待列表项样式 */
+  .coming-soon-feature-list li::before {
+    content: "●";
+    color: var(--coming-soon-color);
+  }
+
   .badge {
     display: inline-block;
     background-color: var(--primary-color);
@@ -190,6 +228,11 @@
     border-radius: 50px;
     margin-left: 10px;
     font-weight: 600;
+  }
+
+  /* 新增：敬请期待徽章样式 */
+  .coming-soon-badge {
+    background-color: var(--coming-soon-color);
   }
 
   .footer {
@@ -253,6 +296,16 @@
     .card-title {
       font-size: 1.3rem;
     }
+    
+    .coming-soon-img {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .coming-soon-img svg {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   /* 特色部分样式 */
@@ -275,12 +328,38 @@
     border-top: 4px solid #217346;
   }
 
+  /* 新增：敬请期待卡片样式 */
+  .coming-soon-feature {
+    border-top: 4px solid var(--coming-soon-color);
+  }
+
+  .coming-soon-title {
+    color: var(--coming-soon-color);
+  }
+
   .instruction {
     font-size: 0.9rem;
     color: var(--text-secondary);
     text-align: center;
     margin-top: 15px;
     font-style: italic;
+  }
+
+  /* 新增：敬请期待内容样式 */
+  .coming-soon-content {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .coming-soon-countdown {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--coming-soon-color);
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: rgba(115, 92, 203, 0.1);
+    border-radius: 50px;
+    display: inline-block;
   }
 </style>
 </head>
@@ -289,7 +368,8 @@
   <div class="container">
     <header class="header">
       <h1>常用办公软件指导网站</h1>
-      <p>一站式办公软件学习平台 | 提供WPS等办公软件的下载、教程和排版规范指南</p>
+      <p>一站式办公软件学习平台 | 提供WPS等办公软件的下载、教程和使用规范指南</p>
+      <p>作者：银杏果&nbsp;</p>
     </header>
 
     <main class="main-content">
@@ -323,7 +403,7 @@
       <!-- WPS 文字 (Writer) 卡片（原Word卡片） -->
       <div class="card word-feature">
         <div class="card-header">
-          <h2 class="card-title">WPS 文字 (Writer) <span class="badge">GB/T 9704-2012</span></h2>
+          <h2 class="card-title">公文排版指南 <span class="badge">GB/T 9704-2012</span></h2>
           <p class="card-subtitle">专业文档排版与党政机关公文格式指南</p>
         </div>
         <div class="card-body">
@@ -376,22 +456,56 @@
           <p class="instruction">WPS表格学习中心即将上线，敬请期待</p>
         </div>
       </div>
+
+      <!-- 新增：敬请期待卡片 -->
+      <div class="card coming-soon-feature">
+        <div class="card-header">
+          <h2 class="card-title coming-soon-title">更多功能 <span class="badge coming-soon-badge">即将推出</span></h2>
+          <p class="card-subtitle">敬请期待我们的新功能</p>
+        </div>
+        <div class="card-body">
+          <div class="card-content">
+            <div class="coming-soon-img">
+              <!-- 时钟图标SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path>
+                <path d="M13 7h-2v6h6v-2h-4z"></path>
+              </svg>
+            </div>
+            
+            <div class="coming-soon-content">
+              <p>我们正在努力开发更多实用的办公软件功能和教程，为您的办公学习提供更全面的支持。</p>
+              
+              <div class="coming-soon-countdown">即将上线</div>
+            </div>
+            
+            <ul class="feature-list coming-soon-feature-list">
+              <li>WPS演示（PPT）高级技巧教程</li>
+              <li>各类文书材料写作教程&nbsp;</li>
+              <li>移动端办公应用指南</li>
+              <li>办公自动化与效率提升</li>
+              <li>更多实用模板资源分享</li>
+            </ul>
+          </div>
+
+          <p class="instruction">&nbsp;</p>
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
       <p>© 2025 常用办公软件指导网站 | 旨在提供优质的办公软件学习资源</p>
-	 <p>网站制作者：哆啦B梦-Ginkgo_Nut（新生实践课作业）</p>
+      <p>网站制作者：哆啦B梦-Ginkgo_Nut（新生实践课作业）</p>
       <div class="footer-links">
-        <a href="#">关于我们</a> | 
-        <a href="#">联系我们</a> | 
-        <a href="#">使用条款</a>
+        <a href="关于我们.html">关于我们</a> | 
+        <a href="联系我们.html">联系我们</a> 
       </div>
       <p style="margin-top: 15px;">本网站提供的软件下载链接来自官方渠道，请放心使用</p>
     </footer>
   </div>
 
   <script>
-     // 添加简单的交互效果
+    // 添加简单的交互效果
     document.addEventListener('DOMContentLoaded', function() {
       // 为下载按钮添加点击反馈
       const downloadButtons = document.querySelectorAll('.download-btn');
@@ -401,13 +515,25 @@
           if (this.getAttribute('href') === '#') {
             e.preventDefault();
             const originalText = this.textContent;
-            this.textContent = '功能开发中，敬请期待！';
-            this.style.background = 'linear-gradient(to right, #6e84a3, #95a5c6)';
             
-            setTimeout(() => {
-              this.textContent = originalText;
-              this.style.background = 'linear-gradient(to right, var(--accent-color), #00c76f)';
-            }, 2000);
+            // 特别处理敬请期待卡片的按钮
+            if (this.id === 'comingSoonBtn') {
+              this.textContent = '已订阅！我们会通过邮件通知您';
+              this.style.background = 'linear-gradient(to right, #28a745, #20c997)';
+              
+              setTimeout(() => {
+                this.textContent = originalText;
+                this.style.background = 'linear-gradient(to right, var(--coming-soon-color), #8a77d8)';
+              }, 3000);
+            } else {
+              this.textContent = '功能开发中，敬请期待！';
+              this.style.background = 'linear-gradient(to right, #6e84a3, #95a5c6)';
+              
+              setTimeout(() => {
+                this.textContent = originalText;
+                this.style.background = 'linear-gradient(to right, var(--accent-color), #00c76f)';
+              }, 2000);
+            }
           }
         });
       });
@@ -442,6 +568,30 @@
         }, delay);
         delay += 150;
       });
+
+      // 为敬请期待卡片添加特殊效果
+      const comingSoonCard = document.querySelector('.coming-soon-feature');
+      const comingSoonImg = document.querySelector('.coming-soon-img svg');
+      
+      if (comingSoonCard) {
+        // 添加脉冲动画效果
+        setInterval(() => {
+          comingSoonCard.style.boxShadow = '0 4px 20px rgba(115, 92, 203, 0.3)';
+          setTimeout(() => {
+            comingSoonCard.style.boxShadow = 'var(--shadow)';
+          }, 1000);
+        }, 3000);
+      }
+      
+      if (comingSoonImg) {
+        // 时钟指针动画
+        let rotation = 0;
+        setInterval(() => {
+          rotation = (rotation + 1) % 360;
+          comingSoonImg.style.transform = `rotate(${rotation}deg)`;
+          comingSoonImg.style.transition = 'transform 0.5s ease';
+        }, 2000);
+      }
     });
   </script>
 </body>
