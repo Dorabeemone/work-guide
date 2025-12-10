@@ -307,7 +307,7 @@
         .screenshot-container {
             background-color: #e9ecef;
             border-radius: 8px;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             margin: 20px 0;
             border: 2px dashed var(--border-color);
@@ -320,7 +320,6 @@
         }
 
         .screenshot-placeholder {
-            font-size: 3rem;
             color: var(--secondary-color);
             margin-bottom: 15px;
         }
@@ -329,6 +328,13 @@
             color: var(--text-secondary);
             margin-top: 15px;
             font-size: 0.95rem;
+        }
+
+        .screenshot-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .important-note {
@@ -496,6 +502,11 @@
             
             .step-header {
                 margin-bottom: 20px;
+            }
+            
+            .screenshot-img {
+                max-width: 100%;
+                height: auto;
             }
         }
 
@@ -748,11 +759,11 @@
                         </div>
                     </div>
                     
-                  <div class="screenshot-container">
-                    <div class="screenshot-placeholder">
-                            <i class="fas fa-image"><img src="段落设置.png" width="750" height="75" alt=""/></i>
-                      </div>
-                      <p class="screenshot-caption">段落设置界面示意图</p>
+                    <div class="screenshot-container">
+                        <div class="screenshot-placeholder">
+                            <img src="段落设置.png" alt="段落设置界面示意图" class="screenshot-img">
+                        </div>
+                        <p class="screenshot-caption">段落设置界面示意图</p>
                     </div>
                 </div>
 
@@ -958,14 +969,14 @@
                     
                     <div class="screenshot-container">
                         <div class="screenshot-placeholder">
-                            <i class="fas fa-image"><img src="换行与分页.png" width="435" height="430" alt=""/></i>
+                            <img src="换行与分页.png" alt="换行和分页设置对话框示意图" class="screenshot-img">
                         </div>
                         <p class="screenshot-caption">换行和分页设置对话框示意图 - 显示西文换行和分页选项</p>
                     </div>
                 </div>
 
                 <!-- 常见问题 -->
-                <div class="content-card">
+                <div class="content-card" id="faq">
                     <h2><i class="fas fa-question-circle"></i> 常见问题与解决</h2>
                     
                     <div class="step-container">
@@ -1034,7 +1045,7 @@
                     <li><a href="#body-paragraph" class="active"><i class="fas fa-paragraph"></i> 正文段落设置</a></li>
                     <li><a href="#title-spacing"><i class="fas fa-text-height"></i> 标题行间距</a></li>
                     <li><a href="#page-break"><i class="fas fa-file-contract"></i> 分页与换行</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i> 常见问题</a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i> 常见问题</a></li>
                 </ul>
                 
                 <div class="wps-tip">
@@ -1177,7 +1188,7 @@
             `;
             
             // 插入到正文段落设置部分
-            const bodyParagraphCard = document.querySelector('#body-paragraph .content-card');
+            const bodyParagraphCard = document.getElementById('body-paragraph');
             if (bodyParagraphCard) {
                 const firstStepContainer = bodyParagraphCard.querySelector('.step-container');
                 if (firstStepContainer) {
